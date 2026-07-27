@@ -127,7 +127,10 @@ button{
     padding:24px 0 110px;
 }
 
-/* 顶部导航 */
+/* =========================
+   顶部导航
+========================= */
+
 .topbar{
     position:sticky;
     top:18px;
@@ -202,6 +205,7 @@ button{
 }
 
 .icon-btn{
+    position:relative;
     display:grid;
     place-items:center;
     width:38px;
@@ -219,7 +223,159 @@ button{
     transform:translateY(-2px);
 }
 
-/* 首屏 */
+/* =========================
+   外观主题菜单
+========================= */
+
+.appearance-wrap{
+    position:relative;
+}
+
+.appearance-btn::after{
+    content:"";
+    position:absolute;
+    right:6px;
+    bottom:6px;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--primary);
+    box-shadow:0 0 8px var(--primary);
+}
+
+.appearance-panel{
+    position:absolute;
+    top:calc(100% + 13px);
+    right:0;
+    width:245px;
+    padding:15px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:rgba(8,20,35,.92);
+    backdrop-filter:blur(28px);
+    -webkit-backdrop-filter:blur(28px);
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.4),
+        0 0 0 1px rgba(255,255,255,.02);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-8px) scale(.96);
+    transform-origin:top right;
+    transition:
+        opacity .22s ease,
+        visibility .22s ease,
+        transform .22s ease;
+}
+
+.appearance-panel::before{
+    content:"";
+    position:absolute;
+    top:-6px;
+    right:17px;
+    width:11px;
+    height:11px;
+    border-top:1px solid var(--border);
+    border-left:1px solid var(--border);
+    background:rgba(8,20,35,.92);
+    transform:rotate(45deg);
+}
+
+.appearance-panel.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0) scale(1);
+}
+
+.appearance-title{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    padding:3px 5px 12px;
+    color:var(--text);
+    font-size:14px;
+    font-weight:800;
+}
+
+.appearance-title small{
+    color:var(--muted);
+    font-size:10px;
+    font-weight:400;
+    letter-spacing:1px;
+}
+
+.theme-options{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.theme-option{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    padding:9px;
+    border:1px solid transparent;
+    border-radius:13px;
+    color:var(--text);
+    background:transparent;
+    text-align:left;
+    transition:.22s;
+}
+
+.theme-option:hover{
+    border-color:rgba(86,214,255,.25);
+    background:rgba(255,255,255,.08);
+    transform:translateX(3px);
+}
+
+.theme-option.active{
+    border-color:rgba(86,214,255,.4);
+    background:rgba(86,214,255,.11);
+}
+
+.theme-option-icon{
+    display:grid;
+    place-items:center;
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    color:var(--primary);
+    background:rgba(86,214,255,.1);
+    font-size:15px;
+}
+
+.theme-option-text{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    flex:1;
+}
+
+.theme-option-text strong{
+    font-size:13px;
+    font-weight:700;
+}
+
+.theme-option-text small{
+    color:var(--muted);
+    font-size:10px;
+}
+
+.theme-check{
+    display:none;
+    color:var(--primary);
+    font-size:17px;
+}
+
+.theme-option.active .theme-check{
+    display:block;
+}
+
+/* =========================
+   首屏区域
+========================= */
+
 .hero{
     display:grid;
     grid-template-columns:1.4fr .8fr;
@@ -339,7 +495,6 @@ button{
     font-size:13px;
 }
 
-/* 时间卡片 */
 .info-card{
     position:relative;
     overflow:hidden;
@@ -415,7 +570,10 @@ button{
     box-shadow:0 0 8px var(--primary);
 }
 
-/* 搜索框 */
+/* =========================
+   搜索框
+========================= */
+
 .search-panel{
     display:flex;
     align-items:center;
@@ -495,7 +653,10 @@ button{
     box-shadow:0 8px 25px rgba(86,214,255,.28);
 }
 
-/* 流量卡横幅 */
+/* =========================
+   流量卡横幅
+========================= */
+
 .banner{
     position:relative;
     overflow:hidden;
@@ -580,7 +741,10 @@ button{
     font-weight:800;
 }
 
-/* 分类区域 */
+/* =========================
+   分类
+========================= */
+
 .category{
     padding:26px;
     margin-top:22px;
@@ -644,7 +808,10 @@ button{
     gap:15px;
 }
 
-/* 卡片 */
+/* =========================
+   网站卡片
+========================= */
+
 .card{
     position:relative;
     overflow:hidden;
@@ -726,7 +893,6 @@ button{
     font-size:13px;
 }
 
-/* 网站独立颜色 */
 .card-chatgpt i{
     color:#8dffcf;
     background:rgba(141,255,207,.1);
@@ -757,7 +923,10 @@ button{
     background:rgba(213,231,255,.1);
 }
 
-/* 每日一言 */
+/* =========================
+   每日一言与页脚
+========================= */
+
 .quote-box{
     padding:25px;
     margin-top:22px;
@@ -780,7 +949,6 @@ button{
     font-size:24px;
 }
 
-/* 页脚 */
 .footer{
     padding:30px 0 0;
     color:#71859d;
@@ -789,50 +957,20 @@ button{
     line-height:2;
 }
 
-/* 主题按钮 */
-.theme-switch{
-    position:fixed;
-    right:22px;
-    bottom:22px;
-    z-index:50;
-    display:flex;
-    gap:7px;
-    padding:8px;
-    border:1px solid var(--border);
-    border-radius:17px;
-    background:rgba(7,17,31,.68);
-    backdrop-filter:blur(18px);
-}
+/* =========================
+   音乐播放器
+========================= */
 
-.theme-switch button{
-    display:grid;
-    place-items:center;
-    width:34px;
-    height:34px;
-    border:0;
-    border-radius:10px;
-    color:var(--muted);
-    background:rgba(255,255,255,.08);
-    font-size:14px;
-    transition:.2s;
-}
-
-.theme-switch button:hover{
-    color:#06121d;
-    background:var(--primary);
-}
-
-/* 音乐播放器 */
 .music-player{
     position:fixed;
     right:24px;
-    bottom:82px;
+    bottom:28px;
     z-index:40;
     width:315px;
     padding:20px;
     border:1px solid var(--border);
     border-radius:25px;
-    background:rgba(8,20,35,.82);
+    background:rgba(8,20,35,.84);
     backdrop-filter:blur(26px);
     box-shadow:0 20px 60px rgba(0,0,0,.4);
     transition:.35s;
@@ -910,7 +1048,7 @@ button{
 }
 
 .music-close:hover{
-    color:white;
+    color:#fff;
     background:var(--danger);
 }
 
@@ -961,7 +1099,10 @@ button{
     font-size:17px;
 }
 
-/* 浅色模式 */
+/* =========================
+   主题模式
+========================= */
+
 .light-mode{
     --bg:#e9f1f8;
     --panel:rgba(255,255,255,.74);
@@ -983,15 +1124,15 @@ button{
 }
 
 .light-mode .topbar,
-.light-mode .music-player{
-    background:rgba(255,255,255,.72);
+.light-mode .music-player,
+.light-mode .appearance-panel{
+    background:rgba(255,255,255,.9);
 }
 
-.light-mode .theme-switch{
-    background:rgba(255,255,255,.72);
+.light-mode .appearance-panel::before{
+    background:rgba(255,255,255,.9);
 }
 
-/* 透明模式 */
 .transparent-mode{
     --panel:rgba(255,255,255,.035);
 }
@@ -1005,15 +1146,18 @@ button{
     background:rgba(255,255,255,.025);
 }
 
-/* 平板 */
+/* =========================
+   平板和手机
+========================= */
+
 @media(max-width:1050px){
+
     .music-player{
         width:275px;
         right:16px;
     }
 }
 
-/* 移动端 */
 @media(max-width:760px){
 
     .container{
@@ -1096,10 +1240,29 @@ button{
         margin-bottom:16px;
     }
 
+    .appearance-panel{
+        position:fixed;
+        top:auto;
+        right:12px;
+        bottom:78px;
+        width:235px;
+        transform-origin:bottom right;
+    }
+
+    .appearance-panel::before{
+        top:auto;
+        right:16px;
+        bottom:-6px;
+        border-top:0;
+        border-left:0;
+        border-right:1px solid var(--border);
+        border-bottom:1px solid var(--border);
+    }
+
     .music-player{
         left:12px;
         right:12px;
-        bottom:70px;
+        bottom:14px;
         width:auto;
         padding:12px 14px;
         border-radius:19px;
@@ -1129,14 +1292,8 @@ button{
         width:40px;
         height:40px;
     }
-
-    .theme-switch{
-        right:12px;
-        bottom:12px;
-    }
 }
 
-/* 极小屏幕播放器改为横向迷你播放器 */
 @media(max-width:500px){
 
     .music-player{
@@ -1168,7 +1325,7 @@ button{
     }
 }
 
-/* 减少动画 */
+/* 减少动态效果 */
 @media(prefers-reduced-motion:reduce){
 
     *,
@@ -1220,26 +1377,148 @@ button{
             <button
                 class="icon-btn"
                 title="显示或隐藏播放器"
+                aria-label="显示或隐藏播放器"
                 onclick="togglePlayer()">
+<!---->
                 <i class="bi bi-music-note-beamed"></i>
+<!---->
             </button>
 <!---->
+            <!-- 主题设置 -->
+            <div class="appearance-wrap">
+<!---->
+                <button
+                    class="icon-btn appearance-btn"
+                    id="appearanceBtn"
+                    title="外观设置"
+                    aria-label="外观设置"
+                    aria-expanded="false">
+<!---->
+                    <i class="bi bi-palette2"></i>
+<!---->
+                </button>
+<!---->
+                <div
+                    class="appearance-panel"
+                    id="appearancePanel"
+                    aria-hidden="true">
+<!---->
+                    <div class="appearance-title">
+                        <span>外观设置</span>
+                        <small>APPEARANCE</small>
+                    
+</div>
+
+
+
+                    <div class="theme-options">
+<!---->
+                        <button
+                            class="theme-option"
+                            data-theme="glass">
+<!---->
+                            <span class="theme-option-icon">
+                                <i class="bi bi-droplet"></i>
+                            </span>
+<!---->
+                            <span class="theme-option-text">
+                                <strong>毛玻璃</strong>
+                                <small>Glass</small>
+                            </span>
+<!---->
+                            <i class="bi bi-check2 theme-check"></i>
+                        </button>
+<!---->
+                        <button
+                            class="theme-option"
+                            data-theme="transparent">
+<!---->
+                            <span class="theme-option-icon">
+                                <i class="bi bi-eye"></i>
+                            </span>
+<!---->
+                            <span class="theme-option-text">
+                                <strong>透明</strong>
+                                <small>Clear</small>
+                            </span>
+<!---->
+                            <i class="bi bi-check2 theme-check"></i>
+                        </button>
+<!---->
+                        <button
+                            class="theme-option"
+                            data-theme="dark">
+<!---->
+                            <span class="theme-option-icon">
+                                <i class="bi bi-moon-stars"></i>
+                            </span>
+<!---->
+                            <span class="theme-option-text">
+                                <strong>深色</strong>
+                                <small>Dark</small>
+                            </span>
+<!---->
+                            <i class="bi bi-check2 theme-check"></i>
+                        </button>
+<!---->
+                        <button
+                            class="theme-option"
+                            data-theme="light">
+<!---->
+                            <span class="theme-option-icon">
+                                <i class="bi bi-sun"></i>
+                            </span>
+<!---->
+                            <span class="theme-option-text">
+                                <strong>浅色</strong>
+                                <small>Light</small>
+                            </span>
+<!---->
+                            <i class="bi bi-check2 theme-check"></i>
+                        </button>
+<!---->
+                        <button
+                            class="theme-option"
+                            data-theme="system">
+<!---->
+                            <span class="theme-option-icon">
+                                <i class="bi bi-circle-half"></i>
+                            </span>
+<!---->
+                            <span class="theme-option-text">
+                                <strong>跟随系统</strong>
+                                <small>System</small>
+                            </span>
+<!---->
+                            <i class="bi bi-check2 theme-check"></i>
+                        </button>
+<!---->
+                    
+</div>
+
+
+
+                </div>
+
+            </div>
+
             <button
                 class="icon-btn"
                 title="回到顶部"
+                aria-label="回到顶部"
                 onclick="window.scrollTo({top:0,behavior:'smooth'})">
-                <i class="bi bi-arrow-up"></i>
-            </button>
-<!---->
-        
-</div>
 
+                <i class="bi bi-arrow-up"></i>
+
+            </button>
+
+        </div>
 
     </header>
 
     <main>
 <!---->
-        <!-- 首屏区域 -->
+        <!-- Hero -->
         <section class="hero">
 <!---->
             <div class="hero-main">
@@ -1282,7 +1561,6 @@ button{
 <!---->
             </div>
 <!---->
-            <!-- 时间卡片 -->
             <div class="info-card">
 <!---->
                 <div class="info-label">
@@ -1333,7 +1611,9 @@ button{
                 aria-label="搜索关键词"
                 required>
 <!---->
-            <span class="search-shortcut">按 / 聚焦</span>
+            <span class="search-shortcut">
+                按 / 聚焦
+            </span>
 <!---->
             <button type="submit">
                 <i class="bi bi-search"></i>
@@ -1342,7 +1622,7 @@ button{
 <!---->
         </form>
 <!---->
-        <!-- 流量卡横幅 -->
+        <!-- 流量卡 -->
         <a
             class="banner"
             href="https://172.lot-ml.com/ProductEn/Index/c68981b403e80740"
@@ -1519,7 +1799,7 @@ button{
 
 
 <!---->
-        <!-- 音乐网站 -->
+        <!-- 音乐资源 -->
         <section class="category">
 <!---->
             <div
@@ -1617,7 +1897,6 @@ button{
 
 
 
-    <!-- 页脚 -->
     <footer class="footer">
 
         <div id="runtime">
@@ -1645,29 +1924,6 @@ button{
     </footer>
 
 </div>
-
-<!-- 主题切换 -->
-<div class="theme-switch">
-<!---->
-    <button onclick="setTheme('glass')" title="毛玻璃">
-        <i class="bi bi-droplet"></i>
-    </button>
-<!---->
-    <button onclick="setTheme('transparent')" title="透明模式">
-        <i class="bi bi-eye"></i>
-    </button>
-<!---->
-    <button onclick="setTheme('dark')" title="深色模式">
-        <i class="bi bi-moon-stars"></i>
-    </button>
-<!---->
-    <button onclick="setTheme('light')" title="浅色模式">
-        <i class="bi bi-sun"></i>
-    </button>
-<!---->
-</div>
-
-
 
 <!-- 音乐播放器 -->
 <div class="music-player" id="musicPlayer">
@@ -1762,7 +2018,10 @@ button{
 </div>
 
 <script>
-/* 时间与问候 */
+/* =========================
+   时间与问候
+========================= */
+
 function updateTime(){
 
     const now = new Date();
@@ -1799,14 +2058,20 @@ updateTime();
 setInterval(updateTime,1000);
 
 
-/* 搜索 */
+/* =========================
+   搜索功能
+========================= */
+
 function doSearch(event){
 
     event.preventDefault();
 
-    const input = document.getElementById("keyword");
-    const keyword = encodeURIComponent(input.value.trim());
-    const engine = document.getElementById("engine").value;
+    const keyword = encodeURIComponent(
+        document.getElementById("keyword").value.trim()
+    );
+
+    const engine =
+        document.getElementById("engine").value;
 
     const searchUrl = {
         bing:"https://www.bing.com/search?q=",
@@ -1821,7 +2086,10 @@ function doSearch(event){
 }
 
 
-/* 天气中文翻译 */
+/* =========================
+   天气
+========================= */
+
 function translateWeather(text){
 
     const map = {
@@ -1844,8 +2112,6 @@ function translateWeather(text){
     return map[text] || text;
 }
 
-
-/* 天气请求 */
 const weatherController = new AbortController();
 
 setTimeout(() => {
@@ -1871,10 +2137,10 @@ fetch("https://wttr.in/?format=j1",{
         icon = "☁️";
     }else if(/snow|雪/i.test(rawDesc)){
         icon = "❄️";
-    }else if(/sun|clear|晴/i.test(rawDesc)){
-        icon = "☀️";
     }else if(/thunder|雷/i.test(rawDesc)){
         icon = "⛈️";
+    }else if(/sun|clear|晴/i.test(rawDesc)){
+        icon = "☀️";
     }
 
     document.getElementById("weather").innerHTML =
@@ -1889,7 +2155,10 @@ fetch("https://wttr.in/?format=j1",{
 });
 
 
-/* 每日一言 */
+/* =========================
+   每日一言
+========================= */
+
 fetch("https://v1.hitokoto.cn/")
 .then(response => response.json())
 .then(data => {
@@ -1910,46 +2179,151 @@ fetch("https://v1.hitokoto.cn/")
 });
 
 
-/* 分类折叠 */
+/* =========================
+   分类折叠
+========================= */
+
 function toggleSection(contentId,arrowId){
 
-    const content = document.getElementById(contentId);
-    const arrow = document.getElementById(arrowId);
+    const content =
+        document.getElementById(contentId);
+
+    const arrow =
+        document.getElementById(arrowId);
 
     content.classList.toggle("show");
     arrow.classList.toggle("open");
-
 }
 
 
-/* 主题切换 */
-function setTheme(theme){
+/* =========================
+   外观主题系统
+========================= */
+
+const appearanceBtn =
+    document.getElementById("appearanceBtn");
+
+const appearancePanel =
+    document.getElementById("appearancePanel");
+
+const themeOptions =
+    document.querySelectorAll(".theme-option");
+
+const systemTheme =
+    window.matchMedia("(prefers-color-scheme: light)");
+
+function applyTheme(theme){
 
     document.body.classList.remove(
         "light-mode",
         "transparent-mode"
     );
 
-    if(theme === "light"){
+    let actualTheme = theme;
+
+    if(theme === "system"){
+        actualTheme = systemTheme.matches
+            ? "light"
+            : "dark";
+    }
+
+    if(actualTheme === "light"){
         document.body.classList.add("light-mode");
     }
 
-    if(theme === "transparent"){
+    if(actualTheme === "transparent"){
         document.body.classList.add("transparent-mode");
     }
+
+    themeOptions.forEach(option => {
+        option.classList.toggle(
+            "active",
+            option.dataset.theme === theme
+        );
+    });
 
     localStorage.setItem("theme",theme);
 }
 
-const savedTheme = localStorage.getItem("theme");
-
-if(savedTheme){
-    setTheme(savedTheme);
+function setTheme(theme){
+    applyTheme(theme);
 }
 
+function closeAppearancePanel(){
 
-/* 运行时间 */
-const startDate = new Date("2025-06-25T00:00:00");
+    appearancePanel.classList.remove("show");
+
+    appearanceBtn.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    appearancePanel.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+}
+
+appearanceBtn.addEventListener("click",event => {
+
+    event.stopPropagation();
+
+    const isOpen =
+        appearancePanel.classList.toggle("show");
+
+    appearanceBtn.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+    );
+
+    appearancePanel.setAttribute(
+        "aria-hidden",
+        isOpen ? "false" : "true"
+    );
+});
+
+themeOptions.forEach(option => {
+
+    option.addEventListener("click",event => {
+
+        event.stopPropagation();
+
+        setTheme(option.dataset.theme);
+
+        setTimeout(() => {
+            closeAppearancePanel();
+        },180);
+    });
+});
+
+document.addEventListener("click",event => {
+
+    if(
+        !appearancePanel.contains(event.target) &&
+        !appearanceBtn.contains(event.target)
+    ){
+        closeAppearancePanel();
+    }
+});
+
+systemTheme.addEventListener("change",() => {
+
+    if(localStorage.getItem("theme") === "system"){
+        applyTheme("system");
+    }
+});
+
+applyTheme(
+    localStorage.getItem("theme") || "glass"
+);
+
+
+/* =========================
+   运行时间
+========================= */
+
+const startDate =
+    new Date("2025-06-25T00:00:00");
 
 function updateRuntime(){
 
@@ -1958,9 +2332,14 @@ function updateRuntime(){
         Date.now() - startDate.getTime()
     );
 
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor(diff / 3600000) % 24;
-    const minutes = Math.floor(diff / 60000) % 60;
+    const days =
+        Math.floor(diff / 86400000);
+
+    const hours =
+        Math.floor(diff / 3600000) % 24;
+
+    const minutes =
+        Math.floor(diff / 60000) % 60;
 
     document.getElementById("runtime").textContent =
         `🚀 已运行 ${days} 天 ${hours} 小时 ${minutes} 分钟`;
@@ -1970,20 +2349,42 @@ updateRuntime();
 setInterval(updateRuntime,60000);
 
 
-/* 音乐播放器 */
-const player = document.getElementById("musicPlayer");
-const audio = document.getElementById("audio");
-const cover = document.getElementById("musicCover");
+/* =========================
+   音乐播放器
+========================= */
 
-const progress = document.getElementById("progress");
-const playBtn = document.getElementById("playBtn");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
+const player =
+    document.getElementById("musicPlayer");
 
-const title = document.getElementById("musicTitle");
-const artist = document.getElementById("musicArtist");
-const currentTime = document.getElementById("currentTime");
-const duration = document.getElementById("duration");
+const audio =
+    document.getElementById("audio");
+
+const cover =
+    document.getElementById("musicCover");
+
+const progress =
+    document.getElementById("progress");
+
+const playBtn =
+    document.getElementById("playBtn");
+
+const prevBtn =
+    document.getElementById("prevBtn");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+const title =
+    document.getElementById("musicTitle");
+
+const artist =
+    document.getElementById("musicArtist");
+
+const currentTime =
+    document.getElementById("currentTime");
+
+const duration =
+    document.getElementById("duration");
 
 const playlist = [
     {
@@ -1999,8 +2400,11 @@ function formatTime(seconds){
 
     seconds = Math.floor(seconds || 0);
 
-    const minutes = Math.floor(seconds / 60);
-    const secondsText = String(seconds % 60).padStart(2,"0");
+    const minutes =
+        Math.floor(seconds / 60);
+
+    const secondsText =
+        String(seconds % 60).padStart(2,"0");
 
     return `${String(minutes).padStart(2,"0")}:${secondsText}`;
 }
@@ -2011,7 +2415,8 @@ function loadSong(index){
 
     audio.src = song.src;
     title.textContent = song.title;
-    artist.textContent = `${song.artist} · Personal Music`;
+    artist.textContent =
+        `${song.artist} · Personal Music`;
 
     audio.load();
 }
@@ -2022,7 +2427,10 @@ function updatePlayButton(isPlaying){
         ? `<i class="bi bi-pause-fill"></i>`
         : `<i class="bi bi-play-fill"></i>`;
 
-    cover.classList.toggle("playing",isPlaying);
+    cover.classList.toggle(
+        "playing",
+        isPlaying
+    );
 }
 
 function playAudio(){
@@ -2045,55 +2453,54 @@ playBtn.addEventListener("click",() => {
         audio.pause();
         updatePlayButton(false);
     }
-
 });
 
 prevBtn.addEventListener("click",() => {
 
     currentIndex =
-        (currentIndex - 1 + playlist.length) % playlist.length;
+        (currentIndex - 1 + playlist.length)
+        % playlist.length;
 
     loadSong(currentIndex);
     playAudio();
-
 });
 
 nextBtn.addEventListener("click",() => {
 
     currentIndex =
-        (currentIndex + 1) % playlist.length;
+        (currentIndex + 1)
+        % playlist.length;
 
     loadSong(currentIndex);
     playAudio();
-
 });
 
 audio.addEventListener("timeupdate",() => {
 
     if(audio.duration){
         progress.value =
-            audio.currentTime / audio.duration * 100;
+            audio.currentTime /
+            audio.duration * 100;
     }
 
     currentTime.textContent =
         formatTime(audio.currentTime);
-
 });
 
 audio.addEventListener("loadedmetadata",() => {
 
     duration.textContent =
         formatTime(audio.duration);
-
 });
 
 progress.addEventListener("input",() => {
 
     if(audio.duration){
         audio.currentTime =
-            progress.value / 100 * audio.duration;
+            progress.value /
+            100 *
+            audio.duration;
     }
-
 });
 
 audio.addEventListener("ended",() => {
@@ -2103,8 +2510,11 @@ audio.addEventListener("ended",() => {
 audio.addEventListener("error",() => {
 
     updatePlayButton(false);
-    console.warn("音乐文件加载失败，请检查音乐路径");
 
+    console.warn(
+        "音乐文件加载失败，请检查音乐路径：",
+        audio.src
+    );
 });
 
 function togglePlayer(){
@@ -2117,25 +2527,39 @@ document.getElementById("avatar")
 loadSong(currentIndex);
 
 
-/* 键盘快捷键 */
+/* =========================
+   键盘快捷键
+========================= */
+
 document.addEventListener("keydown",event => {
 
-    const activeTag = document.activeElement.tagName;
+    const activeTag =
+        document.activeElement.tagName;
 
-    if(event.key === "/" && activeTag !== "INPUT"){
+    if(
+        event.key === "/" &&
+        activeTag !== "INPUT" &&
+        activeTag !== "TEXTAREA" &&
+        activeTag !== "SELECT"
+    ){
         event.preventDefault();
+
         document.getElementById("keyword").focus();
     }
 
-    if(event.code === "Space" &&
-       activeTag !== "INPUT" &&
-       activeTag !== "TEXTAREA" &&
-       activeTag !== "SELECT"){
-
+    if(
+        event.code === "Space" &&
+        activeTag !== "INPUT" &&
+        activeTag !== "TEXTAREA" &&
+        activeTag !== "SELECT"
+    ){
         event.preventDefault();
         playBtn.click();
     }
 
+    if(event.key === "Escape"){
+        closeAppearancePanel();
+    }
 });
 </script>
 
@@ -2226,7 +2650,6 @@ particlesJS("particles-js",{
     },
 
     retina_detect:true
-
 });
 </script>
 
