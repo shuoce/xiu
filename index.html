@@ -127,14 +127,11 @@ button{
     padding:24px 0 110px;
 }
 
-/* =========================
-   顶部导航
-========================= */
-
+/* 顶部导航 */
 .topbar{
     position:sticky;
     top:18px;
-    z-index:20;
+    z-index:100;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -223,12 +220,10 @@ button{
     transform:translateY(-2px);
 }
 
-/* =========================
-   外观主题菜单
-========================= */
-
+/* 主题设置 */
 .appearance-wrap{
     position:relative;
+    z-index:1000;
 }
 
 .appearance-btn::after{
@@ -245,20 +240,22 @@ button{
 
 .appearance-panel{
     position:absolute;
+    z-index:9999;
     top:calc(100% + 13px);
     right:0;
     width:245px;
     padding:15px;
     border:1px solid var(--border);
     border-radius:20px;
-    background:rgba(8,20,35,.92);
+    background:rgba(8,20,35,.96);
     backdrop-filter:blur(28px);
     -webkit-backdrop-filter:blur(28px);
     box-shadow:
-        0 18px 50px rgba(0,0,0,.4),
-        0 0 0 1px rgba(255,255,255,.02);
+        0 18px 50px rgba(0,0,0,.45),
+        0 0 0 1px rgba(255,255,255,.03);
     opacity:0;
     visibility:hidden;
+    pointer-events:none;
     transform:translateY(-8px) scale(.96);
     transform-origin:top right;
     transition:
@@ -276,13 +273,14 @@ button{
     height:11px;
     border-top:1px solid var(--border);
     border-left:1px solid var(--border);
-    background:rgba(8,20,35,.92);
+    background:rgba(8,20,35,.96);
     transform:rotate(45deg);
 }
 
 .appearance-panel.show{
     opacity:1;
     visibility:visible;
+    pointer-events:auto;
     transform:translateY(0) scale(1);
 }
 
@@ -372,10 +370,7 @@ button{
     display:block;
 }
 
-/* =========================
-   首屏区域
-========================= */
-
+/* 首屏 */
 .hero{
     display:grid;
     grid-template-columns:1.4fr .8fr;
@@ -570,10 +565,7 @@ button{
     box-shadow:0 0 8px var(--primary);
 }
 
-/* =========================
-   搜索框
-========================= */
-
+/* 搜索 */
 .search-panel{
     display:flex;
     align-items:center;
@@ -653,10 +645,7 @@ button{
     box-shadow:0 8px 25px rgba(86,214,255,.28);
 }
 
-/* =========================
-   流量卡横幅
-========================= */
-
+/* 流量卡 */
 .banner{
     position:relative;
     overflow:hidden;
@@ -735,16 +724,13 @@ button{
     padding:12px 20px;
     border-radius:999px;
     color:#07111f;
-    background:white;
+    background:#fff;
     box-shadow:0 7px 20px rgba(255,255,255,.15);
     font-size:13px;
     font-weight:800;
 }
 
-/* =========================
-   分类
-========================= */
-
+/* 分类 */
 .category{
     padding:26px;
     margin-top:22px;
@@ -808,10 +794,7 @@ button{
     gap:15px;
 }
 
-/* =========================
-   网站卡片
-========================= */
-
+/* 卡片 */
 .card{
     position:relative;
     overflow:hidden;
@@ -923,10 +906,7 @@ button{
     background:rgba(213,231,255,.1);
 }
 
-/* =========================
-   每日一言与页脚
-========================= */
-
+/* 每日一言 */
 .quote-box{
     padding:25px;
     margin-top:22px;
@@ -957,10 +937,7 @@ button{
     line-height:2;
 }
 
-/* =========================
-   音乐播放器
-========================= */
-
+/* 音乐播放器 */
 .music-player{
     position:fixed;
     right:24px;
@@ -1099,10 +1076,7 @@ button{
     font-size:17px;
 }
 
-/* =========================
-   主题模式
-========================= */
-
+/* 主题 */
 .light-mode{
     --bg:#e9f1f8;
     --panel:rgba(255,255,255,.74);
@@ -1126,11 +1100,11 @@ button{
 .light-mode .topbar,
 .light-mode .music-player,
 .light-mode .appearance-panel{
-    background:rgba(255,255,255,.9);
+    background:rgba(255,255,255,.94);
 }
 
 .light-mode .appearance-panel::before{
-    background:rgba(255,255,255,.9);
+    background:rgba(255,255,255,.94);
 }
 
 .transparent-mode{
@@ -1146,10 +1120,7 @@ button{
     background:rgba(255,255,255,.025);
 }
 
-/* =========================
-   平板和手机
-========================= */
-
+/* 平板 */
 @media(max-width:1050px){
 
     .music-player{
@@ -1158,6 +1129,7 @@ button{
     }
 }
 
+/* 手机端 */
 @media(max-width:760px){
 
     .container{
@@ -1240,23 +1212,29 @@ button{
         margin-bottom:16px;
     }
 
+    /*
+       关键修复：
+       手机端不再使用 fixed，
+       改为相对于顶部主题按钮定位
+    */
     .appearance-panel{
-        position:fixed;
-        top:auto;
-        right:12px;
-        bottom:78px;
+        position:absolute;
+        top:calc(100% + 12px);
+        right:-4px;
+        bottom:auto;
+        z-index:99999;
         width:235px;
-        transform-origin:bottom right;
+        transform-origin:top right;
     }
 
     .appearance-panel::before{
-        top:auto;
+        top:-6px;
         right:16px;
-        bottom:-6px;
-        border-top:0;
-        border-left:0;
-        border-right:1px solid var(--border);
-        border-bottom:1px solid var(--border);
+        bottom:auto;
+        border-top:1px solid var(--border);
+        border-left:1px solid var(--border);
+        border-right:0;
+        border-bottom:0;
     }
 
     .music-player{
@@ -1294,6 +1272,7 @@ button{
     }
 }
 
+/* 极小屏幕 */
 @media(max-width:500px){
 
     .music-player{
@@ -1325,7 +1304,7 @@ button{
     }
 }
 
-/* 减少动态效果 */
+/* 减少动画 */
 @media(prefers-reduced-motion:reduce){
 
     *,
@@ -1375,6 +1354,7 @@ button{
             </nav>
 <!---->
             <button
+                type="button"
                 class="icon-btn"
                 title="显示或隐藏播放器"
                 aria-label="显示或隐藏播放器"
@@ -1384,10 +1364,11 @@ button{
 <!---->
             </button>
 <!---->
-            <!-- 主题设置 -->
+            <!-- 外观设置 -->
             <div class="appearance-wrap">
 <!---->
                 <button
+                    type="button"
                     class="icon-btn appearance-btn"
                     id="appearanceBtn"
                     title="外观设置"
@@ -1414,6 +1395,7 @@ button{
                     <div class="theme-options">
 <!---->
                         <button
+                            type="button"
                             class="theme-option"
                             data-theme="glass">
 <!---->
@@ -1427,9 +1409,11 @@ button{
                             </span>
 <!---->
                             <i class="bi bi-check2 theme-check"></i>
+<!---->
                         </button>
 <!---->
                         <button
+                            type="button"
                             class="theme-option"
                             data-theme="transparent">
 <!---->
@@ -1443,9 +1427,11 @@ button{
                             </span>
 <!---->
                             <i class="bi bi-check2 theme-check"></i>
+<!---->
                         </button>
 <!---->
                         <button
+                            type="button"
                             class="theme-option"
                             data-theme="dark">
 <!---->
@@ -1459,9 +1445,11 @@ button{
                             </span>
 <!---->
                             <i class="bi bi-check2 theme-check"></i>
+<!---->
                         </button>
 <!---->
                         <button
+                            type="button"
                             class="theme-option"
                             data-theme="light">
 <!---->
@@ -1475,9 +1463,11 @@ button{
                             </span>
 <!---->
                             <i class="bi bi-check2 theme-check"></i>
+<!---->
                         </button>
 <!---->
                         <button
+                            type="button"
                             class="theme-option"
                             data-theme="system">
 <!---->
@@ -1491,18 +1481,18 @@ button{
                             </span>
 <!---->
                             <i class="bi bi-check2 theme-check"></i>
+<!---->
                         </button>
 <!---->
                     
 </div>
 
 
-
                 </div>
-
             </div>
 
             <button
+                type="button"
                 class="icon-btn"
                 title="回到顶部"
                 aria-label="回到顶部"
@@ -1558,9 +1548,9 @@ button{
 <!---->
 <!---->
                 </div>
-<!---->
             </div>
 <!---->
+            <!-- 时间信息 -->
             <div class="info-card">
 <!---->
                 <div class="info-label">
@@ -1790,7 +1780,6 @@ button{
 <!---->
 <!---->
                     </div>
-<!---->
                 </div>
             </div>
 <!---->
@@ -1877,7 +1866,6 @@ button{
 <!---->
 <!---->
                     </div>
-<!---->
                 </div>
             </div>
 <!---->
@@ -1955,6 +1943,7 @@ button{
         </div>
 
         <button
+            type="button"
             class="music-close"
             onclick="togglePlayer()"
             title="隐藏播放器"
@@ -1982,6 +1971,7 @@ button{
     <div class="music-controls">
 <!---->
         <button
+            type="button"
             id="prevBtn"
             title="上一首"
             aria-label="上一首">
@@ -1991,6 +1981,7 @@ button{
         </button>
 <!---->
         <button
+            type="button"
             id="playBtn"
             title="播放或暂停"
             aria-label="播放或暂停">
@@ -2000,6 +1991,7 @@ button{
         </button>
 <!---->
         <button
+            type="button"
             id="nextBtn"
             title="下一首"
             aria-label="下一首">
@@ -2018,10 +2010,7 @@ button{
 </div>
 
 <script>
-/* =========================
-   时间与问候
-========================= */
-
+/* 时间与问候 */
 function updateTime(){
 
     const now = new Date();
@@ -2051,17 +2040,15 @@ function updateTime(){
         welcome = "🌤️ 下午好，继续加油";
     }
 
-    document.getElementById("welcome").textContent = welcome;
+    document.getElementById("welcome").textContent =
+        welcome;
 }
 
 updateTime();
 setInterval(updateTime,1000);
 
 
-/* =========================
-   搜索功能
-========================= */
-
+/* 搜索 */
 function doSearch(event){
 
     event.preventDefault();
@@ -2086,10 +2073,7 @@ function doSearch(event){
 }
 
 
-/* =========================
-   天气
-========================= */
-
+/* 天气 */
 function translateWeather(text){
 
     const map = {
@@ -2112,7 +2096,8 @@ function translateWeather(text){
     return map[text] || text;
 }
 
-const weatherController = new AbortController();
+const weatherController =
+    new AbortController();
 
 setTimeout(() => {
     weatherController.abort();
@@ -2124,10 +2109,15 @@ fetch("https://wttr.in/?format=j1",{
 .then(response => response.json())
 .then(data => {
 
-    const weather = data.current_condition[0];
+    const weather =
+        data.current_condition[0];
+
     const temp = weather.temp_C;
-    const rawDesc = weather.weatherDesc[0].value;
-    const desc = translateWeather(rawDesc);
+    const rawDesc =
+        weather.weatherDesc[0].value;
+
+    const desc =
+        translateWeather(rawDesc);
 
     let icon = "🌤️";
 
@@ -2155,10 +2145,7 @@ fetch("https://wttr.in/?format=j1",{
 });
 
 
-/* =========================
-   每日一言
-========================= */
-
+/* 每日一言 */
 fetch("https://v1.hitokoto.cn/")
 .then(response => response.json())
 .then(data => {
@@ -2179,10 +2166,7 @@ fetch("https://v1.hitokoto.cn/")
 });
 
 
-/* =========================
-   分类折叠
-========================= */
-
+/* 分类折叠 */
 function toggleSection(contentId,arrowId){
 
     const content =
@@ -2196,10 +2180,7 @@ function toggleSection(contentId,arrowId){
 }
 
 
-/* =========================
-   外观主题系统
-========================= */
-
+/* 外观主题系统 */
 const appearanceBtn =
     document.getElementById("appearanceBtn");
 
@@ -2236,17 +2217,15 @@ function applyTheme(theme){
     }
 
     themeOptions.forEach(option => {
+
         option.classList.toggle(
             "active",
             option.dataset.theme === theme
         );
+
     });
 
     localStorage.setItem("theme",theme);
-}
-
-function setTheme(theme){
-    applyTheme(theme);
 }
 
 function closeAppearancePanel(){
@@ -2266,6 +2245,7 @@ function closeAppearancePanel(){
 
 appearanceBtn.addEventListener("click",event => {
 
+    event.preventDefault();
     event.stopPropagation();
 
     const isOpen =
@@ -2273,12 +2253,12 @@ appearanceBtn.addEventListener("click",event => {
 
     appearanceBtn.setAttribute(
         "aria-expanded",
-        isOpen ? "true" : "false"
+        String(isOpen)
     );
 
     appearancePanel.setAttribute(
         "aria-hidden",
-        isOpen ? "false" : "true"
+        String(!isOpen)
     );
 });
 
@@ -2286,14 +2266,20 @@ themeOptions.forEach(option => {
 
     option.addEventListener("click",event => {
 
+        event.preventDefault();
         event.stopPropagation();
 
-        setTheme(option.dataset.theme);
+        const selectedTheme =
+            event.currentTarget.dataset.theme;
 
-        setTimeout(() => {
-            closeAppearancePanel();
-        },180);
+        applyTheme(selectedTheme);
+        closeAppearancePanel();
+
     });
+});
+
+appearancePanel.addEventListener("click",event => {
+    event.stopPropagation();
 });
 
 document.addEventListener("click",event => {
@@ -2302,6 +2288,13 @@ document.addEventListener("click",event => {
         !appearancePanel.contains(event.target) &&
         !appearanceBtn.contains(event.target)
     ){
+        closeAppearancePanel();
+    }
+});
+
+document.addEventListener("keydown",event => {
+
+    if(event.key === "Escape"){
         closeAppearancePanel();
     }
 });
@@ -2318,10 +2311,7 @@ applyTheme(
 );
 
 
-/* =========================
-   运行时间
-========================= */
-
+/* 运行时间 */
 const startDate =
     new Date("2025-06-25T00:00:00");
 
@@ -2349,10 +2339,7 @@ updateRuntime();
 setInterval(updateRuntime,60000);
 
 
-/* =========================
-   音乐播放器
-========================= */
-
+/* 音乐播放器 */
 const player =
     document.getElementById("musicPlayer");
 
@@ -2411,7 +2398,8 @@ function formatTime(seconds){
 
 function loadSong(index){
 
-    const song = playlist[index];
+    const song =
+        playlist[index];
 
     audio.src = song.src;
     title.textContent = song.title;
@@ -2527,10 +2515,7 @@ document.getElementById("avatar")
 loadSong(currentIndex);
 
 
-/* =========================
-   键盘快捷键
-========================= */
-
+/* 键盘快捷键 */
 document.addEventListener("keydown",event => {
 
     const activeTag =
@@ -2555,10 +2540,6 @@ document.addEventListener("keydown",event => {
     ){
         event.preventDefault();
         playBtn.click();
-    }
-
-    if(event.key === "Escape"){
-        closeAppearancePanel();
     }
 });
 </script>
