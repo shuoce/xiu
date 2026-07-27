@@ -7,22 +7,23 @@
 <title>硕策 · 智能导航</title>
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
 <link rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <style>
 :root{
     --bg:#07111f;
-    --panel:rgba(13,27,45,.72);
-    --panel-light:rgba(255,255,255,.08);
-    --border:rgba(255,255,255,.13);
+    --panel:rgba(12,27,45,.74);
+    --card:rgba(255,255,255,.055);
+    --card-hover:rgba(255,255,255,.11);
+    --border:rgba(255,255,255,.14);
     --text:#f5f9ff;
     --muted:#91a4ba;
     --primary:#56d6ff;
     --secondary:#8d7cff;
-    --danger:#ff6d91;
-    --shadow:0 25px 80px rgba(0,0,0,.38);
-    --radius:24px;
+    --danger:#ff6688;
+    --shadow:0 25px 80px rgba(0,0,0,.36);
 }
 
 *{
@@ -37,17 +38,16 @@ html{
 
 body{
     min-height:100vh;
+    overflow-x:hidden;
     color:var(--text);
     font-family:
-    "Inter",
-    "Microsoft YaHei",
-    system-ui,
-    sans-serif;
-    overflow-x:hidden;
+        "Inter",
+        "Microsoft YaHei",
+        system-ui,
+        sans-serif;
     background:var(--bg);
 }
 
-/* 背景图片 */
 body::before{
     content:"";
     position:fixed;
@@ -56,14 +56,13 @@ body::before{
     background:
         linear-gradient(
             125deg,
-            rgba(4,12,25,.96),
-            rgba(5,21,39,.78),
-            rgba(18,10,50,.86)
+            rgba(3,12,25,.96),
+            rgba(5,21,39,.82),
+            rgba(18,10,50,.9)
         ),
         url("background.jpg") center/cover no-repeat;
 }
 
-/* 极光 */
 body::after{
     content:"";
     position:fixed;
@@ -83,10 +82,10 @@ body::after{
         ),
         radial-gradient(
             circle at 65% 90%,
-            rgba(255,91,158,.13),
+            rgba(255,91,158,.14),
             transparent 30%
         );
-    filter:blur(35px);
+    filter:blur(36px);
     animation:aurora 15s ease-in-out infinite alternate;
 }
 
@@ -94,6 +93,7 @@ body::after{
     from{
         transform:translate3d(-2%,0,0) scale(1);
     }
+
     to{
         transform:translate3d(3%,2%,0) scale(1.08);
     }
@@ -109,7 +109,11 @@ button{
     cursor:pointer;
 }
 
-/* 粒子 */
+:focus-visible{
+    outline:3px solid rgba(86,214,255,.75);
+    outline-offset:3px;
+}
+
 #particles-js{
     position:fixed;
     inset:0;
@@ -117,11 +121,10 @@ button{
     pointer-events:none;
 }
 
-/* 页面宽度 */
 .container{
-    width:min(1180px, calc(100% - 36px));
+    width:min(1180px,calc(100% - 36px));
     margin:0 auto;
-    padding:24px 0 100px;
+    padding:24px 0 110px;
 }
 
 /* 顶部导航 */
@@ -138,9 +141,9 @@ button{
     margin-bottom:70px;
     border:1px solid var(--border);
     border-radius:20px;
-    background:rgba(7,17,31,.58);
-    backdrop-filter:blur(22px);
-    box-shadow:0 12px 40px rgba(0,0,0,.18);
+    background:rgba(7,17,31,.62);
+    backdrop-filter:blur(24px);
+    box-shadow:0 12px 40px rgba(0,0,0,.2);
 }
 
 .brand{
@@ -166,9 +169,9 @@ button{
 
 .brand small{
     display:block;
-    margin-top:2px;
+    margin-top:3px;
     color:var(--muted);
-    font-size:11px;
+    font-size:10px;
     font-weight:400;
     letter-spacing:0;
 }
@@ -176,7 +179,26 @@ button{
 .nav-actions{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:10px;
+}
+
+.quick-nav{
+    display:flex;
+    gap:6px;
+}
+
+.quick-nav a{
+    padding:8px 12px;
+    border-radius:10px;
+    color:var(--muted);
+    text-decoration:none;
+    font-size:12px;
+    transition:.25s;
+}
+
+.quick-nav a:hover{
+    color:var(--text);
+    background:rgba(255,255,255,.08);
 }
 
 .icon-btn{
@@ -193,12 +215,11 @@ button{
 
 .icon-btn:hover{
     color:#06121d;
-    border-color:transparent;
     background:var(--primary);
     transform:translateY(-2px);
 }
 
-/* Hero */
+/* 首屏 */
 .hero{
     display:grid;
     grid-template-columns:1.4fr .8fr;
@@ -243,7 +264,7 @@ button{
     align-items:center;
     gap:8px;
     padding:7px 12px;
-    border:1px solid rgba(86,214,255,.28);
+    border:1px solid rgba(86,214,255,.3);
     border-radius:999px;
     color:var(--primary);
     background:rgba(86,214,255,.08);
@@ -262,8 +283,8 @@ button{
 .hero h1{
     position:relative;
     z-index:1;
-    margin:24px 0 12px;
-    font-size:clamp(36px,6vw,72px);
+    margin:24px 0 13px;
+    font-size:clamp(38px,6vw,72px);
     line-height:1.05;
     letter-spacing:-3px;
 }
@@ -283,10 +304,10 @@ button{
 .hero-desc{
     position:relative;
     z-index:1;
-    max-width:560px;
-    color:var(--muted);
-    line-height:1.8;
-    font-size:15px;
+    max-width:570px;
+    color:#b4c5d8;
+    line-height:1.85;
+    font-size:14px;
 }
 
 .hero-footer{
@@ -299,9 +320,9 @@ button{
 }
 
 .avatar{
-    width:48px;
-    height:48px;
-    border:2px solid rgba(255,255,255,.25);
+    width:50px;
+    height:50px;
+    border:2px solid rgba(255,255,255,.3);
     border-radius:50%;
     object-fit:cover;
     box-shadow:0 0 25px rgba(86,214,255,.35);
@@ -318,8 +339,10 @@ button{
     font-size:13px;
 }
 
-/* 时间信息 */
+/* 时间卡片 */
 .info-card{
+    position:relative;
+    overflow:hidden;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -327,21 +350,36 @@ button{
     border-radius:32px;
 }
 
+.info-card::after{
+    content:"";
+    position:absolute;
+    right:-50px;
+    bottom:-60px;
+    width:180px;
+    height:180px;
+    border:1px solid rgba(86,214,255,.25);
+    border-radius:50%;
+    box-shadow:
+        0 0 0 20px rgba(86,214,255,.04),
+        0 0 0 40px rgba(86,214,255,.03);
+}
+
 .info-label{
     color:var(--muted);
-    font-size:13px;
+    font-size:12px;
+    letter-spacing:1px;
 }
 
 .time{
-    margin:12px 0 3px;
-    font-size:clamp(34px,5vw,58px);
+    margin:12px 0 4px;
+    font-size:clamp(36px,5vw,58px);
     font-weight:800;
     letter-spacing:-2px;
 }
 
 .date{
     color:var(--muted);
-    font-size:13px;
+    font-size:14px;
 }
 
 .weather{
@@ -349,22 +387,50 @@ button{
     align-items:center;
     gap:8px;
     width:max-content;
-    margin-top:28px;
+    margin-top:26px;
     padding:10px 13px;
     border-radius:14px;
     color:#c9f5ff;
     background:rgba(86,214,255,.09);
-    font-size:13px;
+    font-size:14px;
 }
 
-/* 搜索 */
+.time-extra{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    margin-top:18px;
+    color:var(--muted);
+    font-size:11px;
+}
+
+.time-extra span::before{
+    content:"";
+    display:inline-block;
+    width:5px;
+    height:5px;
+    margin-right:7px;
+    border-radius:50%;
+    background:var(--primary);
+    box-shadow:0 0 8px var(--primary);
+}
+
+/* 搜索框 */
 .search-panel{
     display:flex;
-    gap:12px;
     align-items:center;
+    gap:12px;
     padding:12px;
     margin:22px 0;
     border-radius:22px;
+    transition:.25s;
+}
+
+.search-panel:focus-within{
+    border-color:rgba(86,214,255,.65);
+    box-shadow:
+        0 0 0 4px rgba(86,214,255,.08),
+        0 15px 45px rgba(0,0,0,.25);
 }
 
 .search-panel select,
@@ -392,10 +458,24 @@ button{
     padding:15px 8px;
     color:var(--text);
     background:transparent;
+    font-size:15px;
 }
 
 .search-panel input::placeholder{
     color:#7890a8;
+}
+
+.search-panel input:focus::placeholder{
+    opacity:.35;
+}
+
+.search-shortcut{
+    padding:5px 8px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:7px;
+    color:var(--muted);
+    background:rgba(255,255,255,.05);
+    font-size:11px;
 }
 
 .search-panel button{
@@ -415,8 +495,10 @@ button{
     box-shadow:0 8px 25px rgba(86,214,255,.28);
 }
 
-/* 广告横幅 */
+/* 流量卡横幅 */
 .banner{
+    position:relative;
+    overflow:hidden;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -436,10 +518,42 @@ button{
     transition:.3s;
 }
 
+.banner::before{
+    content:"";
+    position:absolute;
+    top:-80px;
+    right:110px;
+    width:220px;
+    height:220px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:50%;
+    box-shadow:
+        0 0 0 25px rgba(255,255,255,.04),
+        0 0 0 50px rgba(255,255,255,.025);
+}
+
 .banner:hover{
     transform:translateY(-4px);
     border-color:rgba(86,214,255,.6);
     box-shadow:0 16px 45px rgba(86,214,255,.13);
+}
+
+.banner-content{
+    position:relative;
+    z-index:1;
+}
+
+.banner-label{
+    position:absolute;
+    top:14px;
+    right:18px;
+    z-index:2;
+    padding:4px 8px;
+    border-radius:6px;
+    color:#fff;
+    background:#ff6688;
+    font-size:10px;
+    font-weight:bold;
 }
 
 .banner-title{
@@ -454,16 +568,19 @@ button{
 }
 
 .banner-btn{
+    position:relative;
+    z-index:1;
     white-space:nowrap;
-    padding:11px 17px;
+    padding:12px 20px;
     border-radius:999px;
     color:#07111f;
     background:white;
+    box-shadow:0 7px 20px rgba(255,255,255,.15);
     font-size:13px;
     font-weight:800;
 }
 
-/* 分类 */
+/* 分类区域 */
 .category{
     padding:26px;
     margin-top:22px;
@@ -527,7 +644,7 @@ button{
     gap:15px;
 }
 
-/* 网站卡片 */
+/* 卡片 */
 .card{
     position:relative;
     overflow:hidden;
@@ -537,7 +654,7 @@ button{
     border-radius:21px;
     color:var(--text);
     text-decoration:none;
-    background:rgba(255,255,255,.045);
+    background:var(--card);
     transition:.3s;
 }
 
@@ -555,15 +672,32 @@ button{
     transition:.3s;
 }
 
+.card::after{
+    content:"↗";
+    position:absolute;
+    right:16px;
+    bottom:14px;
+    color:var(--muted);
+    font-size:15px;
+    opacity:0;
+    transition:.25s;
+}
+
 .card:hover{
     transform:translateY(-6px);
     border-color:rgba(86,214,255,.45);
-    background:rgba(255,255,255,.1);
+    background:var(--card-hover);
     box-shadow:0 14px 35px rgba(0,0,0,.2);
 }
 
 .card:hover::before{
     opacity:.2;
+}
+
+.card:hover::after{
+    opacity:1;
+    color:var(--primary);
+    transform:translate(2px,-2px);
 }
 
 .card i{
@@ -589,19 +723,55 @@ button{
     position:relative;
     margin-top:7px;
     color:var(--muted);
-    font-size:12px;
+    font-size:13px;
+}
+
+/* 网站独立颜色 */
+.card-chatgpt i{
+    color:#8dffcf;
+    background:rgba(141,255,207,.1);
+}
+
+.card-doubao i{
+    color:#ffd166;
+    background:rgba(255,209,102,.1);
+}
+
+.card-youtube i{
+    color:#ff637b;
+    background:rgba(255,99,123,.1);
+}
+
+.card-bilibili i{
+    color:#ff8bd1;
+    background:rgba(255,139,209,.1);
+}
+
+.card-douyin i{
+    color:#fff;
+    background:rgba(255,255,255,.1);
+}
+
+.card-x i{
+    color:#d5e7ff;
+    background:rgba(213,231,255,.1);
 }
 
 /* 每日一言 */
 .quote-box{
-    position:relative;
     padding:25px;
     margin-top:22px;
     border-radius:22px;
-    text-align:center;
     color:#d7e8f7;
+    text-align:center;
     line-height:1.8;
     font-size:14px;
+}
+
+.quote-box small{
+    display:block;
+    margin-top:5px;
+    color:var(--muted);
 }
 
 .quote-mark{
@@ -619,7 +789,7 @@ button{
     line-height:2;
 }
 
-/* 主题切换 */
+/* 主题按钮 */
 .theme-switch{
     position:fixed;
     right:22px;
@@ -630,22 +800,25 @@ button{
     padding:8px;
     border:1px solid var(--border);
     border-radius:17px;
-    background:rgba(7,17,31,.65);
+    background:rgba(7,17,31,.68);
     backdrop-filter:blur(18px);
 }
 
 .theme-switch button{
-    width:32px;
-    height:32px;
+    display:grid;
+    place-items:center;
+    width:34px;
+    height:34px;
     border:0;
     border-radius:10px;
-    color:var(--text);
+    color:var(--muted);
     background:rgba(255,255,255,.08);
+    font-size:14px;
     transition:.2s;
 }
 
 .theme-switch button:hover{
-    color:#07111f;
+    color:#06121d;
     background:var(--primary);
 }
 
@@ -653,13 +826,13 @@ button{
 .music-player{
     position:fixed;
     right:24px;
-    bottom:85px;
+    bottom:82px;
     z-index:40;
     width:315px;
     padding:20px;
     border:1px solid var(--border);
     border-radius:25px;
-    background:rgba(8,20,35,.78);
+    background:rgba(8,20,35,.82);
     backdrop-filter:blur(26px);
     box-shadow:0 20px 60px rgba(0,0,0,.4);
     transition:.35s;
@@ -697,8 +870,13 @@ button{
 }
 
 @keyframes coverPulse{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.08)}
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
 }
 
 .music-meta{
@@ -717,7 +895,7 @@ button{
 .music-artist{
     margin-top:5px;
     color:var(--muted);
-    font-size:12px;
+    font-size:13px;
 }
 
 .music-close{
@@ -786,33 +964,31 @@ button{
 /* 浅色模式 */
 .light-mode{
     --bg:#e9f1f8;
-    --panel:rgba(255,255,255,.7);
+    --panel:rgba(255,255,255,.74);
+    --card:rgba(255,255,255,.5);
+    --card-hover:rgba(255,255,255,.82);
     --text:#172538;
     --muted:#607086;
-    --border:rgba(29,64,99,.12);
+    --border:rgba(29,64,99,.13);
 }
 
 .light-mode::before{
     background:
         linear-gradient(
             125deg,
-            rgba(225,241,250,.78),
-            rgba(239,236,255,.85)
+            rgba(225,241,250,.82),
+            rgba(239,236,255,.9)
         ),
         url("background.jpg") center/cover no-repeat;
 }
 
 .light-mode .topbar,
 .light-mode .music-player{
-    background:rgba(255,255,255,.68);
-}
-
-.light-mode .card{
-    background:rgba(255,255,255,.45);
+    background:rgba(255,255,255,.72);
 }
 
 .light-mode .theme-switch{
-    background:rgba(255,255,255,.68);
+    background:rgba(255,255,255,.72);
 }
 
 /* 透明模式 */
@@ -829,11 +1005,19 @@ button{
     background:rgba(255,255,255,.025);
 }
 
-/* 手机端 */
+/* 平板 */
+@media(max-width:1050px){
+    .music-player{
+        width:275px;
+        right:16px;
+    }
+}
+
+/* 移动端 */
 @media(max-width:760px){
 
     .container{
-        width:min(100% - 24px, 600px);
+        width:min(100% - 24px,600px);
         padding-top:12px;
     }
 
@@ -842,7 +1026,8 @@ button{
         margin-bottom:35px;
     }
 
-    .brand small{
+    .brand small,
+    .quick-nav{
         display:none;
     }
 
@@ -860,7 +1045,7 @@ button{
     }
 
     .info-card{
-        min-height:220px;
+        min-height:245px;
     }
 
     .search-panel{
@@ -876,6 +1061,10 @@ button{
 
     .search-panel input{
         padding:14px 10px;
+    }
+
+    .search-shortcut{
+        display:none;
     }
 
     .banner{
@@ -908,15 +1097,91 @@ button{
     }
 
     .music-player{
-        right:12px;
-        bottom:72px;
         left:12px;
+        right:12px;
+        bottom:70px;
         width:auto;
+        padding:12px 14px;
+        border-radius:19px;
+    }
+
+    .music-cover{
+        width:48px;
+        height:48px;
+        border-radius:14px;
+    }
+
+    .music-artist{
+        font-size:11px;
+    }
+
+    .music-controls{
+        gap:6px;
+        margin-top:10px;
+    }
+
+    .music-controls button{
+        width:32px;
+        height:32px;
+    }
+
+    #playBtn{
+        width:40px;
+        height:40px;
     }
 
     .theme-switch{
         right:12px;
         bottom:12px;
+    }
+}
+
+/* 极小屏幕播放器改为横向迷你播放器 */
+@media(max-width:500px){
+
+    .music-player{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        height:68px;
+    }
+
+    .music-top{
+        min-width:0;
+        flex:1;
+    }
+
+    .music-player #progress,
+    .music-player .music-time{
+        display:none;
+    }
+
+    .music-close{
+        width:24px;
+        height:24px;
+        font-size:10px;
+    }
+
+    .music-controls{
+        flex:none;
+        margin:0;
+    }
+}
+
+/* 减少动画 */
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important;
+    }
+
+    #particles-js{
+        display:none;
     }
 }
 </style>
@@ -928,7 +1193,9 @@ button{
 
 <div class="container">
 <!---->
+    <!-- 顶部导航 -->
     <header class="topbar">
+<!---->
         <a href="#" class="brand">
             <span class="brand-mark">
                 <i class="bi bi-stars"></i>
@@ -944,15 +1211,26 @@ button{
 
 <!---->
         <div class="nav-actions">
-            <button class="icon-btn" title="显示播放器"
-                    onclick="togglePlayer()">
+<!---->
+            <nav class="quick-nav">
+                <a href="#commonContent">常用</a>
+                <a href="#musicContent">音乐</a>
+            </nav>
+<!---->
+            <button
+                class="icon-btn"
+                title="显示或隐藏播放器"
+                onclick="togglePlayer()">
                 <i class="bi bi-music-note-beamed"></i>
             </button>
 <!---->
-            <button class="icon-btn" title="回到顶部"
-                    onclick="window.scrollTo({top:0,behavior:'smooth'})">
+            <button
+                class="icon-btn"
+                title="回到顶部"
+                onclick="window.scrollTo({top:0,behavior:'smooth'})">
                 <i class="bi bi-arrow-up"></i>
             </button>
+<!---->
         
 </div>
 
@@ -961,13 +1239,18 @@ button{
 
     <main>
 <!---->
+        <!-- 首屏区域 -->
         <section class="hero">
 <!---->
             <div class="hero-main">
+<!---->
                 <div class="eyebrow">
                     <span></span>
                     SYSTEM ONLINE
-                </div>
+                
+</div>
+<!---->
+<!---->
 <!---->
                 <h1>
                     你好，<br>
@@ -980,10 +1263,11 @@ button{
                 </p>
 <!---->
                 <div class="hero-footer">
+<!---->
                     <img
                         class="avatar"
                         id="avatar"
-                        src="/Personalization/avatar.png"
+                        src="Personalization/avatar.png"
                         alt="头像"
                         title="点击显示或隐藏音乐播放器">
 <!---->
@@ -993,11 +1277,20 @@ button{
 </div>
 <!---->
 <!---->
+<!---->
                 </div>
+<!---->
             </div>
 <!---->
+            <!-- 时间卡片 -->
             <div class="info-card">
-                <div class="info-label">LOCAL TIME · 本地时间</div>
+<!---->
+                <div class="info-label">
+                    LOCAL TIME · 本地时间
+                
+</div>
+<!---->
+<!---->
 <!---->
                 <div class="time" id="time">
                     00:00:00
@@ -1008,9 +1301,15 @@ button{
                 </div>
 <!---->
                 <div class="weather" id="weather">
-                    <i class="bi bi-cloud-sun"></i>
+                    <span>🌤️</span>
                     获取天气中...
                 </div>
+<!---->
+                <div class="time-extra">
+                    <span>按 / 快速聚焦搜索框</span>
+                    <span>按空格键播放或暂停音乐</span>
+                </div>
+<!---->
             </div>
 <!---->
         
@@ -1018,8 +1317,10 @@ button{
 
 
 <!---->
+        <!-- 搜索 -->
         <form class="search-panel" onsubmit="doSearch(event)">
-            <select id="engine">
+<!---->
+            <select id="engine" aria-label="搜索引擎">
                 <option value="bing">Bing</option>
                 <option value="google">Google</option>
             </select>
@@ -1029,21 +1330,28 @@ button{
                 type="text"
                 autocomplete="off"
                 placeholder="搜索网页、图片、问题或灵感..."
+                aria-label="搜索关键词"
                 required>
+<!---->
+            <span class="search-shortcut">按 / 聚焦</span>
 <!---->
             <button type="submit">
                 <i class="bi bi-search"></i>
                 搜索
             </button>
+<!---->
         </form>
 <!---->
+        <!-- 流量卡横幅 -->
         <a
             class="banner"
             href="https://172.lot-ml.com/ProductEn/Index/c68981b403e80740"
             target="_blank"
             rel="noopener">
 <!---->
-            <div>
+            <span class="banner-label">HOT</span>
+<!---->
+            <div class="banner-content">
                 <div class="banner-title">
                     <i class="bi bi-broadcast-pin"></i>
                     流量卡专区
@@ -1055,127 +1363,250 @@ button{
             </div>
 <!---->
             <span class="banner-btn">
-                立即办理 <i class="bi bi-arrow-up-right"></i>
+                立即办理
+                <i class="bi bi-arrow-up-right"></i>
             </span>
+<!---->
         
 </a>
 <!---->
 
 <!---->
+        <!-- 常用网站 -->
         <section class="category">
-            <div class="section-head" onclick="toggleSection('commonContent','commonArrow')">
+<!---->
+            <div
+                class="section-head"
+                onclick="toggleSection('commonContent','commonArrow')">
+<!---->
                 <div class="section-name">
                     <span class="section-icon">
                         <i class="bi bi-grid-1x2-fill"></i>
                     </span>
                     常用网站
-                </div>
+                
+</div>
 <!---->
-                <i class="bi bi-chevron-down arrow open" id="commonArrow"></i>
+<!---->
+<!---->
+                <i
+                    class="bi bi-chevron-down arrow open"
+                    id="commonArrow">
+                </i>
+<!---->
             </div>
 <!---->
             <div class="section-content show" id="commonContent">
                 <div class="section-inner">
+<!---->
                     <div class="grid">
 <!---->
-                        <a class="card" href="https://chatgpt.com" target="_blank" rel="noopener">
+                        <a
+                            class="card card-chatgpt"
+                            href="https://chatgpt.com"
+                            target="_blank"
+                            rel="noopener">
+<!---->
                             <i class="bi bi-robot"></i>
                             <div class="card-title">ChatGPT
 </div>
 <!---->
 <!---->
                             <div class="card-desc">AI 智能助手</div>
-                        </a>
 <!---->
-                        <a class="card" href="https://www.doubao.com" target="_blank" rel="noopener">
+                        
+</a>
+<!---->
+<!---->
+<!---->
+                        <a
+                            class="card card-doubao"
+                            href="https://www.doubao.com"
+                            target="_blank"
+                            rel="noopener">
+<!---->
                             <i class="bi bi-lightning-charge-fill"></i>
                             <div class="card-title">豆包</div>
                             <div class="card-desc">字节 AI 助手</div>
-                        </a>
 <!---->
-                        <a class="card" href="https://www.wenxiaobai.com" target="_blank" rel="noopener">
+                        
+</a>
+<!---->
+<!---->
+<!---->
+                        <a
+                            class="card"
+                            href="https://www.wenxiaobai.com"
+                            target="_blank"
+                            rel="noopener">
+<!---->
                             <i class="bi bi-chat-dots-fill"></i>
                             <div class="card-title">问小白</div>
                             <div class="card-desc">智能问答平台</div>
-                        </a>
 <!---->
-                        <a class="card" href="https://www.youtube.com" target="_blank" rel="noopener">
+                        
+</a>
+<!---->
+<!---->
+<!---->
+                        <a
+                            class="card card-youtube"
+                            href="https://www.youtube.com"
+                            target="_blank"
+                            rel="noopener">
+<!---->
                             <i class="bi bi-youtube"></i>
                             <div class="card-title">YouTube</div>
                             <div class="card-desc">全球视频平台</div>
-                        </a>
 <!---->
-                        <a class="card" href="https://www.bilibili.com" target="_blank" rel="noopener">
+                        
+</a>
+<!---->
+<!---->
+<!---->
+                        <a
+                            class="card card-bilibili"
+                            href="https://www.bilibili.com"
+                            target="_blank"
+                            rel="noopener">
+<!---->
                             <i class="bi bi-play-btn-fill"></i>
                             <div class="card-title">哔哩哔哩</div>
                             <div class="card-desc">年轻人的潮流文化</div>
-                        </a>
 <!---->
-                        <a class="card" href="https://www.douyin.com" target="_blank" rel="noopener">
+                        
+</a>
+<!---->
+<!---->
+<!---->
+                        <a
+                            class="card card-douyin"
+                            href="https://www.douyin.com"
+                            target="_blank"
+                            rel="noopener">
+<!---->
                             <i class="bi bi-music-note-beamed"></i>
                             <div class="card-title">抖音</div>
                             <div class="card-desc">记录美好生活</div>
-                        </a>
 <!---->
-                        <a class="card" href="https://x.com" target="_blank" rel="noopener">
+                        
+</a>
+<!---->
+<!---->
+<!---->
+                        <a
+                            class="card card-x"
+                            href="https://x.com"
+                            target="_blank"
+                            rel="noopener">
+<!---->
                             <i class="bi bi-twitter-x"></i>
                             <div class="card-title">X</div>
                             <div class="card-desc">全球社交平台</div>
-                        </a>
+<!---->
+                        
+</a>
+<!---->
+<!---->
 <!---->
                     </div>
+<!---->
                 </div>
             </div>
+<!---->
         
 </section>
 
 
 <!---->
+        <!-- 音乐网站 -->
         <section class="category">
-            <div class="section-head" onclick="toggleSection('musicContent','musicArrow')">
+<!---->
+            <div
+                class="section-head"
+                onclick="toggleSection('musicContent','musicArrow')">
+<!---->
                 <div class="section-name">
                     <span class="section-icon">
                         <i class="bi bi-vinyl-fill"></i>
                     </span>
                     音乐资源
-                </div>
+                
+</div>
 <!---->
-                <i class="bi bi-chevron-down arrow" id="musicArrow"></i>
+<!---->
+<!---->
+                <i
+                    class="bi bi-chevron-down arrow"
+                    id="musicArrow">
+                </i>
+<!---->
             </div>
 <!---->
             <div class="section-content" id="musicContent">
                 <div class="section-inner">
+<!---->
                     <div class="grid">
 <!---->
-                        <a class="card" href="https://www.gequbao.com/" target="_blank" rel="noopener">
+                        <a
+                            class="card"
+                            href="https://www.gequbao.com/"
+                            target="_blank"
+                            rel="noopener">
+<!---->
                             <i class="bi bi-cloud-download-fill"></i>
                             <div class="card-title">歌曲宝
 </div>
 <!---->
 <!---->
                             <div class="card-desc">在线试听 / 下载</div>
-                        </a>
 <!---->
-                        <a class="card" href="https://zz123.com/" target="_blank" rel="noopener">
+                        
+</a>
+<!---->
+<!---->
+<!---->
+                        <a
+                            class="card"
+                            href="https://zz123.com/"
+                            target="_blank"
+                            rel="noopener">
+<!---->
                             <i class="bi bi-music-note-list"></i>
                             <div class="card-title">种子音乐</div>
                             <div class="card-desc">在线听歌</div>
-                        </a>
 <!---->
-                        <a class="card" href="https://www.qqmp3.vip/" target="_blank" rel="noopener">
+                        
+</a>
+<!---->
+<!---->
+<!---->
+                        <a
+                            class="card"
+                            href="https://www.qqmp3.vip/"
+                            target="_blank"
+                            rel="noopener">
+<!---->
                             <i class="bi bi-headphones"></i>
                             <div class="card-title">米兔音乐</div>
                             <div class="card-desc">免费音乐资源</div>
-                        </a>
+<!---->
+                        
+</a>
+<!---->
+<!---->
 <!---->
                     </div>
+<!---->
                 </div>
             </div>
+<!---->
         
 </section>
 
 
 <!---->
+        <!-- 每日一言 -->
         <div class="quote-box">
             <span class="quote-mark">“</span>
             <span id="hitokoto">正在加载每日一言...</span>
@@ -1186,8 +1617,12 @@ button{
 
 
 
+    <!-- 页脚 -->
     <footer class="footer">
-        <div id="runtime">🚀 已运行 0 天</div>
+
+        <div id="runtime">
+            🚀 已运行 0 天
+        </div>
 
         © 2026 shuoce.eu.cc
 
@@ -1206,17 +1641,33 @@ button{
             <span id="busuanzi_value_site_uv"></span>
             位访客
         </span>
+
     </footer>
 
 </div>
 
-<!-- 主题按钮 -->
+<!-- 主题切换 -->
 <div class="theme-switch">
-    <button onclick="setTheme('glass')" title="毛玻璃">🧊</button>
-    <button onclick="setTheme('transparent')" title="透明模式">◌</button>
-    <button onclick="setTheme('dark')" title="深色模式">🌙</button>
-    <button onclick="setTheme('light')" title="浅色模式">☀️</button>
+<!---->
+    <button onclick="setTheme('glass')" title="毛玻璃">
+        <i class="bi bi-droplet"></i>
+    </button>
+<!---->
+    <button onclick="setTheme('transparent')" title="透明模式">
+        <i class="bi bi-eye"></i>
+    </button>
+<!---->
+    <button onclick="setTheme('dark')" title="深色模式">
+        <i class="bi bi-moon-stars"></i>
+    </button>
+<!---->
+    <button onclick="setTheme('light')" title="浅色模式">
+        <i class="bi bi-sun"></i>
+    </button>
+<!---->
 </div>
+
+
 
 <!-- 音乐播放器 -->
 <div class="music-player" id="musicPlayer">
@@ -1233,17 +1684,28 @@ button{
 
 
         <div class="music-meta">
+<!---->
             <div class="music-title" id="musicTitle">
                 奶酪
-            </div>
+            
+</div>
+
+
 
             <div class="music-artist" id="musicArtist">
                 未知歌手 · Personal Music
             </div>
+
         </div>
 
-        <button class="music-close" onclick="togglePlayer()" title="隐藏播放器">
+        <button
+            class="music-close"
+            onclick="togglePlayer()"
+            title="隐藏播放器"
+            aria-label="隐藏播放器">
+
             <i class="bi bi-x-lg"></i>
+
         </button>
 
     </div>
@@ -1253,7 +1715,8 @@ button{
         id="progress"
         min="0"
         max="100"
-        value="0">
+        value="0"
+        aria-label="播放进度">
 
     <div class="music-time">
         <span id="currentTime">00:00</span>
@@ -1261,40 +1724,56 @@ button{
     </div>
 
     <div class="music-controls">
-        <button id="prevBtn" title="上一首">
+<!---->
+        <button
+            id="prevBtn"
+            title="上一首"
+            aria-label="上一首">
+<!---->
             <i class="bi bi-skip-backward-fill"></i>
+<!---->
         </button>
 <!---->
-        <button id="playBtn" title="播放 / 暂停">
+        <button
+            id="playBtn"
+            title="播放或暂停"
+            aria-label="播放或暂停">
+<!---->
             <i class="bi bi-play-fill"></i>
+<!---->
         </button>
 <!---->
-        <button id="nextBtn" title="下一首">
+        <button
+            id="nextBtn"
+            title="下一首"
+            aria-label="下一首">
+<!---->
             <i class="bi bi-skip-forward-fill"></i>
+<!---->
         </button>
+<!---->
     
 </div>
 
 
 
     <audio id="audio" preload="metadata"></audio>
+
 </div>
 
 <script>
-/* =========================
-   时间与问候
-========================= */
-
+/* 时间与问候 */
 function updateTime(){
+
     const now = new Date();
 
     document.getElementById("time").textContent =
-        now.toLocaleTimeString("zh-CN", {
+        now.toLocaleTimeString("zh-CN",{
             hour12:false
         });
 
     document.getElementById("date").textContent =
-        now.toLocaleDateString("zh-CN", {
+        now.toLocaleDateString("zh-CN",{
             year:"numeric",
             month:"long",
             day:"numeric",
@@ -1302,6 +1781,7 @@ function updateTime(){
         });
 
     const hour = now.getHours();
+
     let welcome = "🌆 晚上好，愿你保持好心情";
 
     if(hour < 6){
@@ -1316,99 +1796,135 @@ function updateTime(){
 }
 
 updateTime();
-setInterval(updateTime, 1000);
+setInterval(updateTime,1000);
 
 
-/* =========================
-   搜索
-========================= */
-
+/* 搜索 */
 function doSearch(event){
+
     event.preventDefault();
 
-    const keyword = encodeURIComponent(
-        document.getElementById("keyword").value.trim()
-    );
-
+    const input = document.getElementById("keyword");
+    const keyword = encodeURIComponent(input.value.trim());
     const engine = document.getElementById("engine").value;
 
-    const urls = {
-        google:"https://www.google.com/search?q=",
-        bing:"https://www.bing.com/search?q="
+    const searchUrl = {
+        bing:"https://www.bing.com/search?q=",
+        google:"https://www.google.com/search?q="
     };
 
-    window.open(urls[engine] + keyword, "_blank", "noopener");
+    window.open(
+        searchUrl[engine] + keyword,
+        "_blank",
+        "noopener"
+    );
 }
 
 
-/* =========================
-   天气
-========================= */
+/* 天气中文翻译 */
+function translateWeather(text){
 
-fetch("https://wttr.in/?format=j1")
+    const map = {
+        "Sunny":"晴天",
+        "Clear":"晴朗",
+        "Cloudy":"多云",
+        "Partly cloudy":"局部多云",
+        "Overcast":"阴天",
+        "Light rain":"小雨",
+        "Light rain shower":"阵雨",
+        "Patchy rain nearby":"附近有雨",
+        "Moderate rain":"中雨",
+        "Heavy rain":"大雨",
+        "Thunderstorm":"雷暴",
+        "Mist":"薄雾",
+        "Fog":"大雾",
+        "Snow":"下雪"
+    };
+
+    return map[text] || text;
+}
+
+
+/* 天气请求 */
+const weatherController = new AbortController();
+
+setTimeout(() => {
+    weatherController.abort();
+},6000);
+
+fetch("https://wttr.in/?format=j1",{
+    signal:weatherController.signal
+})
 .then(response => response.json())
 .then(data => {
+
     const weather = data.current_condition[0];
     const temp = weather.temp_C;
-    const desc = weather.weatherDesc[0].value;
+    const rawDesc = weather.weatherDesc[0].value;
+    const desc = translateWeather(rawDesc);
 
     let icon = "🌤️";
 
-    if(/rain|雨/i.test(desc)){
+    if(/rain|雨/i.test(rawDesc)){
         icon = "🌧️";
-    }else if(/cloud|云/i.test(desc)){
+    }else if(/cloud|云/i.test(rawDesc)){
         icon = "☁️";
-    }else if(/snow|雪/i.test(desc)){
+    }else if(/snow|雪/i.test(rawDesc)){
         icon = "❄️";
-    }else if(/sun|clear|晴/i.test(desc)){
+    }else if(/sun|clear|晴/i.test(rawDesc)){
         icon = "☀️";
+    }else if(/thunder|雷/i.test(rawDesc)){
+        icon = "⛈️";
     }
 
     document.getElementById("weather").innerHTML =
         `<span>${icon}</span> ${temp}°C · ${desc}`;
+
 })
 .catch(() => {
+
     document.getElementById("weather").innerHTML =
         `<span>🌤️</span> 天气暂时不可用`;
+
 });
 
 
-/* =========================
-   每日一言
-========================= */
-
+/* 每日一言 */
 fetch("https://v1.hitokoto.cn/")
 .then(response => response.json())
 .then(data => {
-    const from = data.from ? ` —— ${data.from}` : "";
+
+    const from = data.from
+        ? `<small>—— ${data.from}</small>`
+        : "";
 
     document.getElementById("hitokoto").innerHTML =
-        `「${data.hitokoto}」<small>${from}</small>`;
+        `「${data.hitokoto}」${from}`;
+
 })
 .catch(() => {
+
     document.getElementById("hitokoto").textContent =
         "保持热爱，奔赴山海。";
+
 });
 
 
-/* =========================
-   分类折叠
-========================= */
+/* 分类折叠 */
+function toggleSection(contentId,arrowId){
 
-function toggleSection(contentId, arrowId){
     const content = document.getElementById(contentId);
     const arrow = document.getElementById(arrowId);
 
     content.classList.toggle("show");
     arrow.classList.toggle("open");
+
 }
 
 
-/* =========================
-   主题切换
-========================= */
-
+/* 主题切换 */
 function setTheme(theme){
+
     document.body.classList.remove(
         "light-mode",
         "transparent-mode"
@@ -1422,7 +1938,7 @@ function setTheme(theme){
         document.body.classList.add("transparent-mode");
     }
 
-    localStorage.setItem("theme", theme);
+    localStorage.setItem("theme",theme);
 }
 
 const savedTheme = localStorage.getItem("theme");
@@ -1432,36 +1948,40 @@ if(savedTheme){
 }
 
 
-/* =========================
-   运行时间
-========================= */
+/* 运行时间 */
+const startDate = new Date("2025-06-25T00:00:00");
 
-const startDate = new Date("2026-06-25T00:00:00");
-const now = new Date();
+function updateRuntime(){
 
-const passedDays = Math.max(
-    0,
-    Math.floor((now - startDate) / 86400000)
-);
+    const diff = Math.max(
+        0,
+        Date.now() - startDate.getTime()
+    );
 
-document.getElementById("runtime").textContent =
-    `🚀 已运行 ${passedDays} 天`;
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor(diff / 3600000) % 24;
+    const minutes = Math.floor(diff / 60000) % 60;
+
+    document.getElementById("runtime").textContent =
+        `🚀 已运行 ${days} 天 ${hours} 小时 ${minutes} 分钟`;
+}
+
+updateRuntime();
+setInterval(updateRuntime,60000);
 
 
-/* =========================
-   播放器
-========================= */
-
+/* 音乐播放器 */
 const player = document.getElementById("musicPlayer");
 const audio = document.getElementById("audio");
 const cover = document.getElementById("musicCover");
-const progress = document.getElementById("progress");
 
+const progress = document.getElementById("progress");
 const playBtn = document.getElementById("playBtn");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 
 const title = document.getElementById("musicTitle");
+const artist = document.getElementById("musicArtist");
 const currentTime = document.getElementById("currentTime");
 const duration = document.getElementById("duration");
 
@@ -1476,122 +1996,146 @@ const playlist = [
 let currentIndex = 0;
 
 function formatTime(seconds){
+
     seconds = Math.floor(seconds || 0);
 
     const minutes = Math.floor(seconds / 60);
-    const secondsText = String(seconds % 60).padStart(2, "0");
+    const secondsText = String(seconds % 60).padStart(2,"0");
 
-    return `${String(minutes).padStart(2, "0")}:${secondsText}`;
+    return `${String(minutes).padStart(2,"0")}:${secondsText}`;
 }
 
 function loadSong(index){
+
     const song = playlist[index];
 
     audio.src = song.src;
     title.textContent = song.title;
-
-    document.getElementById("musicArtist").textContent =
-        `${song.artist} · Personal Music`;
+    artist.textContent = `${song.artist} · Personal Music`;
 
     audio.load();
 }
 
 function updatePlayButton(isPlaying){
+
     playBtn.innerHTML = isPlaying
         ? `<i class="bi bi-pause-fill"></i>`
         : `<i class="bi bi-play-fill"></i>`;
 
-    cover.classList.toggle("playing", isPlaying);
+    cover.classList.toggle("playing",isPlaying);
 }
 
-playBtn.addEventListener("click", () => {
+function playAudio(){
+
+    audio.play()
+    .then(() => {
+        updatePlayButton(true);
+    })
+    .catch(() => {
+        console.log("浏览器阻止播放，请点击播放按钮");
+        updatePlayButton(false);
+    });
+}
+
+playBtn.addEventListener("click",() => {
+
     if(audio.paused){
-        audio.play()
-            .then(() => updatePlayButton(true))
-            .catch(() => {
-                console.log("请先点击播放按钮");
-            });
+        playAudio();
     }else{
         audio.pause();
         updatePlayButton(false);
     }
+
 });
 
-prevBtn.addEventListener("click", () => {
+prevBtn.addEventListener("click",() => {
+
     currentIndex =
         (currentIndex - 1 + playlist.length) % playlist.length;
 
     loadSong(currentIndex);
+    playAudio();
 
-    audio.play()
-        .then(() => updatePlayButton(true))
-        .catch(() => {});
 });
 
-nextBtn.addEventListener("click", () => {
+nextBtn.addEventListener("click",() => {
+
     currentIndex =
         (currentIndex + 1) % playlist.length;
 
     loadSong(currentIndex);
+    playAudio();
 
-    audio.play()
-        .then(() => updatePlayButton(true))
-        .catch(() => {});
 });
 
-audio.addEventListener("timeupdate", () => {
+audio.addEventListener("timeupdate",() => {
+
     if(audio.duration){
         progress.value =
-            (audio.currentTime / audio.duration) * 100;
+            audio.currentTime / audio.duration * 100;
     }
 
-    currentTime.textContent = formatTime(audio.currentTime);
+    currentTime.textContent =
+        formatTime(audio.currentTime);
+
 });
 
-audio.addEventListener("loadedmetadata", () => {
-    duration.textContent = formatTime(audio.duration);
+audio.addEventListener("loadedmetadata",() => {
+
+    duration.textContent =
+        formatTime(audio.duration);
+
 });
 
-progress.addEventListener("input", () => {
+progress.addEventListener("input",() => {
+
     if(audio.duration){
         audio.currentTime =
-            (progress.value / 100) * audio.duration;
+            progress.value / 100 * audio.duration;
     }
+
 });
 
-audio.addEventListener("ended", () => {
+audio.addEventListener("ended",() => {
     nextBtn.click();
 });
 
-audio.addEventListener("error", () => {
+audio.addEventListener("error",() => {
+
     updatePlayButton(false);
     console.warn("音乐文件加载失败，请检查音乐路径");
+
 });
 
 function togglePlayer(){
     player.classList.toggle("hidden");
 }
 
-document.getElementById("avatar").addEventListener("click", togglePlayer);
+document.getElementById("avatar")
+    .addEventListener("click",togglePlayer);
 
 loadSong(currentIndex);
 
 
-/* =========================
-   键盘快捷键
-========================= */
+/* 键盘快捷键 */
+document.addEventListener("keydown",event => {
 
-document.addEventListener("keydown", event => {
-    if(event.key === "/" && document.activeElement.tagName !== "INPUT"){
+    const activeTag = document.activeElement.tagName;
+
+    if(event.key === "/" && activeTag !== "INPUT"){
         event.preventDefault();
         document.getElementById("keyword").focus();
     }
 
     if(event.code === "Space" &&
-       document.activeElement.tagName !== "INPUT"){
+       activeTag !== "INPUT" &&
+       activeTag !== "TEXTAREA" &&
+       activeTag !== "SELECT"){
+
         event.preventDefault();
         playBtn.click();
     }
+
 });
 </script>
 
@@ -1599,11 +2143,12 @@ document.addEventListener("keydown", event => {
 src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 
-<!-- 粒子背景 -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js">
+</script>
 
 <script>
-particlesJS("particles-js", {
+particlesJS("particles-js",{
+
     particles:{
         number:{
             value:55,
@@ -1612,20 +2157,25 @@ particlesJS("particles-js", {
                 value_area:1000
             }
         },
+
         color:{
             value:["#56d6ff","#8d7cff","#ffffff"]
         },
+
         shape:{
             type:"circle"
         },
+
         opacity:{
             value:.35,
             random:true
         },
+
         size:{
             value:2.5,
             random:true
         },
+
         line_linked:{
             enable:true,
             distance:145,
@@ -1633,6 +2183,7 @@ particlesJS("particles-js", {
             opacity:.18,
             width:1
         },
+
         move:{
             enable:true,
             speed:1.2,
@@ -1642,19 +2193,24 @@ particlesJS("particles-js", {
             out_mode:"out"
         }
     },
+
     interactivity:{
         detect_on:"canvas",
+
         events:{
             onhover:{
                 enable:true,
                 mode:"grab"
             },
+
             onclick:{
                 enable:true,
                 mode:"push"
             },
+
             resize:true
         },
+
         modes:{
             grab:{
                 distance:170,
@@ -1662,12 +2218,15 @@ particlesJS("particles-js", {
                     opacity:.55
                 }
             },
+
             push:{
                 particles_nb:3
             }
         }
     },
+
     retina_detect:true
+
 });
 </script>
 
