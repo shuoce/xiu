@@ -45,12 +45,8 @@ body{
         system-ui,
         sans-serif;
     background:var(--bg);
-    transition:
-        background-color .25s ease,
-        color .25s ease;
 }
 
-/* 背景 */
 body::before{
     content:"";
     position:fixed;
@@ -66,7 +62,6 @@ body::before{
         url("background.jpg") center/cover no-repeat;
 }
 
-/* 极光背景 */
 body::after{
     content:"";
     position:fixed;
@@ -93,13 +88,12 @@ body::after{
     animation:aurora 18s ease-in-out infinite alternate;
 }
 
-/* 音乐播放时停止极光动画 */
+/* 音乐播放时降低背景特效，但不隐藏 GIF */
 body.audio-playing::after{
-    animation:none !important;
-    filter:none !important;
+    animation:none;
+    filter:none;
 }
 
-/* 音乐播放时降低页面特效 */
 body.audio-playing .hero-main,
 body.audio-playing .info-card,
 body.audio-playing .search-panel,
@@ -107,15 +101,16 @@ body.audio-playing .category,
 body.audio-playing .quote-box,
 body.audio-playing .topbar,
 body.audio-playing .music-player{
-    backdrop-filter:none !important;
-    -webkit-backdrop-filter:none !important;
-    box-shadow:0 8px 25px rgba(0,0,0,.22) !important;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    box-shadow:0 8px 25px rgba(0,0,0,.22);
 }
 
-/* 播放音乐时隐藏 GIF，避免 GIF 持续解码造成卡顿 */
-body.audio-playing .hero-gif{
-    display:none !important;
-}
+/*
+    注意：
+    这里没有隐藏 .hero-gif，
+    音乐播放时 GIF 仍然正常显示和播放。
+*/
 
 @keyframes aurora{
     from{
@@ -197,7 +192,6 @@ button{
     color:var(--muted);
     font-size:10px;
     font-weight:400;
-    letter-spacing:0;
 }
 
 .nav-actions{
@@ -391,7 +385,7 @@ button{
 }
 
 /* =========================
-   Hero
+   首屏
 ========================= */
 
 .hero{
@@ -704,7 +698,7 @@ button{
 }
 
 /* =========================
-   流量卡
+   横幅
 ========================= */
 
 .banner{
@@ -718,7 +712,7 @@ button{
     margin:22px 0;
     border:1px solid rgba(141,124,255,.3);
     border-radius:24px;
-    color:white;
+    color:#fff;
     text-decoration:none;
     background:linear-gradient(
         120deg,
@@ -935,7 +929,7 @@ button{
 }
 
 /* =========================
-   每日一言和页脚
+   每日一言与页脚
 ========================= */
 
 .quote-box{
@@ -1334,7 +1328,6 @@ button{
     }
 }
 
-/* 减少动画 */
 @media(prefers-reduced-motion:reduce){
 
     *,
@@ -1577,7 +1570,6 @@ button{
                 </div>
             </div>
 <!---->
-            <!-- 时间信息 -->
             <div class="info-card">
 <!---->
                 <div class="info-label">
@@ -2014,7 +2006,6 @@ button{
 
 
 
-    <!-- 使用 metadata，避免打开网页时提前加载整首音乐 -->
     <audio
         id="audio"
         preload="metadata"
@@ -2057,7 +2048,8 @@ function updateTime(){
         welcome = "🌤️ 下午好，继续加油";
     }
 
-    document.getElementById("welcome").textContent = welcome;
+    document.getElementById("welcome").textContent =
+        welcome;
 }
 
 updateTime();
@@ -2072,11 +2064,9 @@ function doSearch(event){
 
     event.preventDefault();
 
-    const input =
-        document.getElementById("keyword");
-
-    const keyword =
-        encodeURIComponent(input.value.trim());
+    const keyword = encodeURIComponent(
+        document.getElementById("keyword").value.trim()
+    );
 
     const engine =
         document.getElementById("engine").value;
@@ -2171,10 +2161,7 @@ function showWeatherError(){
 
 function renderWeather(data){
 
-    if(
-        !data ||
-        !data.current
-    ){
+    if(!data || !data.current){
         showWeatherError();
         return;
     }
@@ -2232,10 +2219,6 @@ function fetchWeather(latitude,longitude){
     .catch(showWeatherError);
 }
 
-/*
-    默认使用北京坐标。
-    如果用户允许定位，则使用用户当前位置。
-*/
 const defaultLocation = {
     latitude:39.9042,
     longitude:116.4074
@@ -2546,7 +2529,8 @@ function loadSong(index){
     const song =
         playlist[index];
 
-    audio.src = song.src;
+    audio.src =
+        song.src;
 
     title.textContent =
         song.title;
