@@ -2,13 +2,11 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>硕策 · 智能导航</title>
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <style>
 :root{
@@ -39,11 +37,7 @@ body{
     min-height:100vh;
     overflow-x:hidden;
     color:var(--text);
-    font-family:
-        "Inter",
-        "Microsoft YaHei",
-        system-ui,
-        sans-serif;
+    font-family:Inter,"Microsoft YaHei",system-ui,sans-serif;
     background:var(--bg);
 }
 
@@ -53,12 +47,7 @@ body::before{
     inset:0;
     z-index:-5;
     background:
-        linear-gradient(
-            125deg,
-            rgba(3,12,25,.96),
-            rgba(5,21,39,.85),
-            rgba(18,10,50,.92)
-        ),
+        linear-gradient(125deg,rgba(3,12,25,.96),rgba(5,21,39,.85),rgba(18,10,50,.92)),
         url("background.jpg") center/cover no-repeat;
 }
 
@@ -69,26 +58,13 @@ body::after{
     z-index:-4;
     pointer-events:none;
     background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(61,214,255,.2),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 82% 15%,
-            rgba(141,124,255,.2),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 65% 90%,
-            rgba(255,91,158,.1),
-            transparent 30%
-        );
+        radial-gradient(circle at 15% 20%,rgba(61,214,255,.2),transparent 28%),
+        radial-gradient(circle at 82% 15%,rgba(141,124,255,.2),transparent 30%),
+        radial-gradient(circle at 65% 90%,rgba(255,91,158,.1),transparent 30%);
     filter:blur(32px);
     animation:aurora 18s ease-in-out infinite alternate;
 }
 
-/* 音乐播放时降低背景特效，但不隐藏 GIF */
 body.audio-playing::after{
     animation:none;
     filter:none;
@@ -106,31 +82,13 @@ body.audio-playing .music-player{
     box-shadow:0 8px 25px rgba(0,0,0,.22);
 }
 
-/*
-    注意：
-    这里没有隐藏 .hero-gif，
-    音乐播放时 GIF 仍然正常显示和播放。
-*/
-
 @keyframes aurora{
-    from{
-        transform:translate3d(-2%,0,0) scale(1);
-    }
-
-    to{
-        transform:translate3d(3%,2%,0) scale(1.08);
-    }
+    from{transform:translate3d(-2%,0,0) scale(1)}
+    to{transform:translate3d(3%,2%,0) scale(1.08)}
 }
 
-button,
-input,
-select{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
+button,input,select{font:inherit}
+button{cursor:pointer}
 
 :focus-visible{
     outline:3px solid rgba(86,214,255,.75);
@@ -139,14 +97,11 @@ button{
 
 .container{
     width:min(1180px,calc(100% - 36px));
-    margin:0 auto;
+    margin:auto;
     padding:24px 0 110px;
 }
 
-/* =========================
-   顶部导航
-========================= */
-
+/* 顶部导航 */
 .topbar{
     position:sticky;
     top:18px;
@@ -238,10 +193,7 @@ button{
     transform:translateY(-2px);
 }
 
-/* =========================
-   主题菜单
-========================= */
-
+/* 主题菜单 */
 .appearance-wrap{
     position:relative;
     z-index:1000;
@@ -365,10 +317,7 @@ button{
     flex:1;
 }
 
-.theme-option-text strong{
-    font-size:13px;
-}
-
+.theme-option-text strong{font-size:13px}
 .theme-option-text small{
     color:var(--muted);
     font-size:10px;
@@ -380,14 +329,9 @@ button{
     font-size:17px;
 }
 
-.theme-option.active .theme-check{
-    display:block;
-}
+.theme-option.active .theme-check{display:block}
 
-/* =========================
-   首屏
-========================= */
-
+/* 首屏 */
 .hero{
     display:grid;
     grid-template-columns:1.4fr .8fr;
@@ -426,7 +370,6 @@ button{
     filter:blur(20px);
 }
 
-/* 右上角 GIF */
 .hero-gif{
     position:absolute;
     top:24px;
@@ -436,7 +379,7 @@ button{
     align-items:center;
     justify-content:center;
     width:clamp(82px,12vw,145px);
-    aspect-ratio:1 / 1;
+    aspect-ratio:1;
     pointer-events:none;
     user-select:none;
 }
@@ -461,13 +404,8 @@ button{
 }
 
 @keyframes heroGifFloat{
-    0%,100%{
-        transform:translateY(0) rotate(0deg);
-    }
-
-    50%{
-        transform:translateY(-6px) rotate(2deg);
-    }
+    0%,100%{transform:translateY(0) rotate(0)}
+    50%{transform:translateY(-6px) rotate(2deg)}
 }
 
 .eyebrow{
@@ -502,12 +440,7 @@ button{
 
 .gradient-text{
     color:transparent;
-    background:linear-gradient(
-        100deg,
-        var(--primary),
-        #fff,
-        var(--secondary)
-    );
+    background:linear-gradient(100deg,var(--primary),#fff,var(--secondary));
     -webkit-background-clip:text;
     background-clip:text;
 }
@@ -621,10 +554,7 @@ button{
     background:var(--primary);
 }
 
-/* =========================
-   搜索
-========================= */
-
+/* 搜索 */
 .search-panel{
     display:flex;
     align-items:center;
@@ -655,9 +585,7 @@ button{
     background:rgba(255,255,255,.08);
 }
 
-.search-panel option{
-    color:#111;
-}
+.search-panel option{color:#111}
 
 .search-panel input{
     flex:1;
@@ -668,9 +596,7 @@ button{
     font-size:15px;
 }
 
-.search-panel input::placeholder{
-    color:#7890a8;
-}
+.search-panel input::placeholder{color:#7890a8}
 
 .search-shortcut{
     padding:5px 8px;
@@ -693,14 +619,9 @@ button{
     transition:.25s;
 }
 
-.search-panel button:hover{
-    transform:translateY(-2px);
-}
+.search-panel button:hover{transform:translateY(-2px)}
 
-/* =========================
-   横幅
-========================= */
-
+/* 横幅 */
 .banner{
     position:relative;
     overflow:hidden;
@@ -714,11 +635,7 @@ button{
     border-radius:24px;
     color:#fff;
     text-decoration:none;
-    background:linear-gradient(
-        120deg,
-        rgba(86,214,255,.16),
-        rgba(141,124,255,.18)
-    );
+    background:linear-gradient(120deg,rgba(86,214,255,.16),rgba(141,124,255,.18));
     transition:.3s;
 }
 
@@ -779,10 +696,7 @@ button{
     font-weight:800;
 }
 
-/* =========================
-   分类和卡片
-========================= */
-
+/* 分类卡片 */
 .category{
     padding:26px;
     margin-top:22px;
@@ -821,9 +735,7 @@ button{
     transition:.3s;
 }
 
-.arrow.open{
-    transform:rotate(180deg);
-}
+.arrow.open{transform:rotate(180deg)}
 
 .section-content{
     display:grid;
@@ -831,9 +743,7 @@ button{
     transition:grid-template-rows .4s ease;
 }
 
-.section-content.show{
-    grid-template-rows:1fr;
-}
+.section-content.show{grid-template-rows:1fr}
 
 .section-inner{
     min-height:0;
@@ -904,34 +814,13 @@ button{
     font-size:13px;
 }
 
-.card-chatgpt i{
-    color:#8dffcf;
-}
+.card-chatgpt i{color:#8dffcf}
+.card-youtube i{color:#ff637b}
+.card-bilibili i{color:#ff8bd1}
+.card-douyin i{color:#fff}
+.card-x i{color:#d5e7ff}
 
-.card-doubao i{
-    color:#ffd166;
-}
-
-.card-youtube i{
-    color:#ff637b;
-}
-
-.card-bilibili i{
-    color:#ff8bd1;
-}
-
-.card-douyin i{
-    color:#fff;
-}
-
-.card-x i{
-    color:#d5e7ff;
-}
-
-/* =========================
-   每日一言与页脚
-========================= */
-
+/* 每日一言和页脚 */
 .quote-box{
     padding:25px;
     margin-top:22px;
@@ -962,10 +851,14 @@ button{
     line-height:2;
 }
 
-/* =========================
-   音乐播放器
-========================= */
+.footer a{
+    color:var(--primary);
+    text-decoration:none;
+}
 
+.footer a:hover{text-decoration:underline}
+
+/* 音乐播放器 */
 .music-player{
     position:fixed;
     right:24px;
@@ -1012,13 +905,8 @@ button{
 }
 
 @keyframes coverPulse{
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.06);
-    }
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.06)}
 }
 
 .music-meta{
@@ -1102,10 +990,7 @@ button{
     background:var(--primary);
 }
 
-/* =========================
-   主题样式
-========================= */
-
+/* 主题 */
 .light-mode{
     --bg:#e9f1f8;
     --panel:rgba(255,255,255,.74);
@@ -1118,11 +1003,7 @@ button{
 
 .light-mode::before{
     background:
-        linear-gradient(
-            125deg,
-            rgba(225,241,250,.82),
-            rgba(239,236,255,.9)
-        ),
+        linear-gradient(125deg,rgba(225,241,250,.82),rgba(239,236,255,.9)),
         url("background.jpg") center/cover no-repeat;
 }
 
@@ -1136,9 +1017,7 @@ button{
     background:rgba(255,255,255,.94);
 }
 
-.transparent-mode{
-    --panel:rgba(255,255,255,.035);
-}
+.transparent-mode{--panel:rgba(255,255,255,.035)}
 
 .transparent-mode .hero-main,
 .transparent-mode .info-card,
@@ -1149,12 +1028,8 @@ button{
     background:rgba(255,255,255,.025);
 }
 
-/* =========================
-   响应式
-========================= */
-
+/* 响应式 */
 @media(max-width:1050px){
-
     .music-player{
         width:275px;
         right:16px;
@@ -1162,7 +1037,6 @@ button{
 }
 
 @media(max-width:760px){
-
     .container{
         width:min(100% - 24px,600px);
         padding-top:12px;
@@ -1174,13 +1048,9 @@ button{
     }
 
     .brand small,
-    .quick-nav{
-        display:none;
-    }
+    .quick-nav{display:none}
 
-    .hero{
-        grid-template-columns:1fr;
-    }
+    .hero{grid-template-columns:1fr}
 
     .hero-main{
         min-height:320px;
@@ -1194,9 +1064,7 @@ button{
         width:clamp(68px,24vw,100px);
     }
 
-    .info-card{
-        min-height:245px;
-    }
+    .info-card{min-height:245px}
 
     .search-panel{
         align-items:stretch;
@@ -1205,17 +1073,10 @@ button{
     }
 
     .search-panel select,
-    .search-panel button{
-        width:100%;
-    }
+    .search-panel button{width:100%}
 
-    .search-panel input{
-        padding:14px 10px;
-    }
-
-    .search-shortcut{
-        display:none;
-    }
+    .search-panel input{padding:14px 10px}
+    .search-shortcut{display:none}
 
     .banner{
         align-items:flex-start;
@@ -1228,9 +1089,7 @@ button{
         text-align:center;
     }
 
-    .category{
-        padding:20px 15px;
-    }
+    .category{padding:20px 15px}
 
     .grid{
         grid-template-columns:repeat(2,1fr);
@@ -1242,9 +1101,7 @@ button{
         padding:16px;
     }
 
-    .card i{
-        margin-bottom:16px;
-    }
+    .card i{margin-bottom:16px}
 
     .appearance-panel{
         top:calc(100% + 12px);
@@ -1267,9 +1124,7 @@ button{
         border-radius:14px;
     }
 
-    .music-artist{
-        font-size:11px;
-    }
+    .music-artist{font-size:11px}
 
     .music-controls{
         gap:6px;
@@ -1288,10 +1143,7 @@ button{
 }
 
 @media(max-width:500px){
-
-    .hero-main{
-        padding-right:98px;
-    }
+    .hero-main{padding-right:98px}
 
     .hero-gif{
         top:18px;
@@ -1329,622 +1181,474 @@ button{
 }
 
 @media(prefers-reduced-motion:reduce){
-
     *,
     *::before,
     *::after{
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
-        scroll-behavior:auto !important;
-        transition-duration:.01ms !important;
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+        transition-duration:.01ms!important;
     }
 
-    .hero-gif img{
-        animation:none;
-    }
+    .hero-gif img{animation:none}
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 <!---->
-    <!-- 顶部导航 -->
-    <header class="topbar">
+<header class="topbar">
+    <a href="#" class="brand">
+        <span class="brand-mark">
+            <i class="bi bi-stars"></i>
+        </span>
+        <span>
+            硕策导航
+            <small>SHUOCE · PERSONAL STARTPAGE</small>
+        </span>
+    </a>
 <!---->
-        <a href="#" class="brand">
-            <span class="brand-mark">
-                <i class="bi bi-stars"></i>
-            </span>
+    <div class="nav-actions">
+        <nav class="quick-nav">
+            <a href="#commonContent">常用</a>
+            <a href="#musicContent">音乐</a>
+        </nav>
 <!---->
-            <span>
-                硕策导航
-                <small>SHUOCE · PERSONAL STARTPAGE</small>
-            </span>
-        
-</a>
+        <button
+            type="button"
+            class="icon-btn"
+            title="显示或隐藏播放器"
+            aria-label="显示或隐藏播放器"
+            onclick="togglePlayer()">
+            <i class="bi bi-music-note-beamed"></i>
+        </button>
 <!---->
-
-<!---->
-        <div class="nav-actions">
-<!---->
-            <nav class="quick-nav">
-                <a href="#commonContent">常用</a>
-                <a href="#musicContent">音乐</a>
-            </nav>
-<!---->
+        <div class="appearance-wrap">
             <button
                 type="button"
-                class="icon-btn"
-                title="显示或隐藏播放器"
-                aria-label="显示或隐藏播放器"
-                onclick="togglePlayer()">
-<!---->
-                <i class="bi bi-music-note-beamed"></i>
+                class="icon-btn appearance-btn"
+                id="appearanceBtn"
+                title="外观设置"
+                aria-label="外观设置"
+                aria-expanded="false">
+                <i class="bi bi-palette2"></i>
             </button>
-<!---->
-            <!-- 主题设置 -->
-            <div class="appearance-wrap">
-<!---->
-                <button
-                    type="button"
-                    class="icon-btn appearance-btn"
-                    id="appearanceBtn"
-                    title="外观设置"
-                    aria-label="外观设置"
-                    aria-expanded="false">
-<!---->
-                    <i class="bi bi-palette2"></i>
-                </button>
-<!---->
-                <div
-                    class="appearance-panel"
-                    id="appearancePanel"
-                    aria-hidden="true">
-<!---->
-                    <div class="appearance-title">
-                        <span>外观设置</span>
-                        <small>APPEARANCE</small>
-                    
-</div>
-
-
-
-                    <div class="theme-options">
-<!---->
-                        <button
-                            type="button"
-                            class="theme-option"
-                            data-theme="glass">
-<!---->
-                            <span class="theme-option-icon">
-                                <i class="bi bi-droplet"></i>
-                            </span>
-<!---->
-                            <span class="theme-option-text">
-                                <strong>毛玻璃</strong>
-                                <small>Glass</small>
-                            </span>
-<!---->
-                            <i class="bi bi-check2 theme-check"></i>
-                        </button>
-<!---->
-                        <button
-                            type="button"
-                            class="theme-option"
-                            data-theme="transparent">
-<!---->
-                            <span class="theme-option-icon">
-                                <i class="bi bi-eye"></i>
-                            </span>
-<!---->
-                            <span class="theme-option-text">
-                                <strong>透明</strong>
-                                <small>Clear</small>
-                            </span>
-<!---->
-                            <i class="bi bi-check2 theme-check"></i>
-                        </button>
-<!---->
-                        <button
-                            type="button"
-                            class="theme-option"
-                            data-theme="dark">
-<!---->
-                            <span class="theme-option-icon">
-                                <i class="bi bi-moon-stars"></i>
-                            </span>
-<!---->
-                            <span class="theme-option-text">
-                                <strong>深色</strong>
-                                <small>Dark</small>
-                            </span>
-<!---->
-                            <i class="bi bi-check2 theme-check"></i>
-                        </button>
-<!---->
-                        <button
-                            type="button"
-                            class="theme-option"
-                            data-theme="light">
-<!---->
-                            <span class="theme-option-icon">
-                                <i class="bi bi-sun"></i>
-                            </span>
-<!---->
-                            <span class="theme-option-text">
-                                <strong>浅色</strong>
-                                <small>Light</small>
-                            </span>
-<!---->
-                            <i class="bi bi-check2 theme-check"></i>
-                        </button>
-<!---->
-                        <button
-                            type="button"
-                            class="theme-option"
-                            data-theme="system">
-<!---->
-                            <span class="theme-option-icon">
-                                <i class="bi bi-circle-half"></i>
-                            </span>
-<!---->
-                            <span class="theme-option-text">
-                                <strong>跟随系统</strong>
-                                <small>System</small>
-                            </span>
-<!---->
-                            <i class="bi bi-check2 theme-check"></i>
-                        </button>
-<!---->
-                    
-</div>
-
-
-                </div>
-            </div>
-
-            <button
-                type="button"
-                class="icon-btn"
-                title="回到顶部"
-                aria-label="回到顶部"
-                onclick="window.scrollTo({top:0,behavior:'smooth'})">
-
-                <i class="bi bi-arrow-up"></i>
-            </button>
-
-        </div>
-    </header>
-
-    <main>
-<!---->
-        <!-- Hero -->
-        <section class="hero">
-<!---->
-            <div class="hero-main">
-<!---->
-                <!-- 右上角装饰 GIF -->
-                <div class="hero-gif">
-                    <img
-                        src="Personalization/gif.gif"
-                        alt="右上角装饰动图"
-                        loading="lazy">
-                
-</div>
-<!---->
-<!---->
-<!---->
-                <div class="eyebrow">
-                    <span></span>
-                    SYSTEM ONLINE
-                </div>
-<!---->
-                <h1>
-                    你好，<br>
-                    <span class="gradient-text">欢迎回来。</span>
-                </h1>
-<!---->
-                <p class="hero-desc">
-                    这里是你的专属数字空间。
-                    快速访问常用网站，发现有趣内容，让每一次打开浏览器都更加高效。
-                </p>
-<!---->
-                <div class="hero-footer">
-<!---->
-                    <img
-                        class="avatar"
-                        id="avatar"
-                        src="Personalization/avatar.png"
-                        alt="头像"
-                        title="点击显示或隐藏音乐播放器">
-<!---->
-                    <div class="welcome" id="welcome">
-                        正在加载问候语...
-                    
-</div>
-<!---->
-<!---->
-<!---->
-                </div>
-            </div>
-<!---->
-            <div class="info-card">
-<!---->
-                <div class="info-label">
-                    LOCAL TIME · 本地时间
-                
-</div>
-<!---->
-<!---->
-<!---->
-                <div class="time" id="time">
-                    00:00:00
-                </div>
-<!---->
-                <div class="date" id="date">
-                    加载中...
-                </div>
-<!---->
-                <div class="weather" id="weather">
-                    <span>🌤️</span>
-                    获取天气中...
-                </div>
-<!---->
-                <div class="time-extra">
-                    <span>按 / 快速聚焦搜索框</span>
-                    <span>按空格键播放或暂停音乐</span>
-                </div>
-<!---->
-            </div>
-<!---->
-        
-</section>
-
-
-<!---->
-        <!-- 搜索 -->
-        <form class="search-panel" onsubmit="doSearch(event)">
-<!---->
-            <select id="engine" aria-label="搜索引擎">
-                <option value="bing">Bing</option>
-                <option value="google">Google</option>
-            </select>
-<!---->
-            <input
-                id="keyword"
-                type="text"
-                autocomplete="off"
-                placeholder="搜索网页、图片、问题或灵感..."
-                aria-label="搜索关键词"
-                required>
-<!---->
-            <span class="search-shortcut">
-                按 / 聚焦
-            </span>
-<!---->
-            <button type="submit">
-                <i class="bi bi-search"></i>
-                搜索
-            </button>
-<!---->
-        </form>
-<!---->
-        <!-- 流量卡 -->
-        <a
-            class="banner"
-            href="https://172.lot-ml.com/ProductEn/Index/c68981b403e80740"
-            target="_blank"
-            rel="noopener">
-<!---->
-            <span class="banner-label">HOT</span>
-<!---->
-            <div class="banner-content">
-                <div class="banner-title">
-                    <i class="bi bi-broadcast-pin"></i>
-                    流量卡专区
-                </div>
-<!---->
-                <div class="banner-desc">
-                    高性价套餐 · 大流量 · 在线办理
-                </div>
-            </div>
-<!---->
-            <span class="banner-btn">
-                立即办理
-                <i class="bi bi-arrow-up-right"></i>
-            </span>
-<!---->
-        
-</a>
-<!---->
-
-<!---->
-        <!-- 常用网站 -->
-        <section class="category">
 <!---->
             <div
-                class="section-head"
-                onclick="toggleSection('commonContent','commonArrow')">
+                class="appearance-panel"
+                id="appearancePanel"
+                aria-hidden="true">
 <!---->
-                <div class="section-name">
-                    <span class="section-icon">
-                        <i class="bi bi-grid-1x2-fill"></i>
-                    </span>
-                    常用网站
+                <div class="appearance-title">
+                    <span>外观设置</span>
+                    <small>APPEARANCE</small>
+                
+</div>
+
+
+
+                <div class="theme-options">
+                    <button type="button" class="theme-option" data-theme="glass">
+                        <span class="theme-option-icon">
+                            <i class="bi bi-droplet"></i>
+                        </span>
+                        <span class="theme-option-text">
+                            <strong>毛玻璃</strong>
+                            <small>Glass</small>
+                        </span>
+                        <i class="bi bi-check2 theme-check"></i>
+                    </button>
+<!---->
+                    <button type="button" class="theme-option" data-theme="transparent">
+                        <span class="theme-option-icon">
+                            <i class="bi bi-eye"></i>
+                        </span>
+                        <span class="theme-option-text">
+                            <strong>透明</strong>
+                            <small>Clear</small>
+                        </span>
+                        <i class="bi bi-check2 theme-check"></i>
+                    </button>
+<!---->
+                    <button type="button" class="theme-option" data-theme="dark">
+                        <span class="theme-option-icon">
+                            <i class="bi bi-moon-stars"></i>
+                        </span>
+                        <span class="theme-option-text">
+                            <strong>深色</strong>
+                            <small>Dark</small>
+                        </span>
+                        <i class="bi bi-check2 theme-check"></i>
+                    </button>
+<!---->
+                    <button type="button" class="theme-option" data-theme="light">
+                        <span class="theme-option-icon">
+                            <i class="bi bi-sun"></i>
+                        </span>
+                        <span class="theme-option-text">
+                            <strong>浅色</strong>
+                            <small>Light</small>
+                        </span>
+                        <i class="bi bi-check2 theme-check"></i>
+                    </button>
+<!---->
+                    <button type="button" class="theme-option" data-theme="system">
+                        <span class="theme-option-icon">
+                            <i class="bi bi-circle-half"></i>
+                        </span>
+                        <span class="theme-option-text">
+                            <strong>跟随系统</strong>
+                            <small>System</small>
+                        </span>
+                        <i class="bi bi-check2 theme-check"></i>
+                    </button>
+                
+</div>
+
+
+            </div>
+        </div>
+
+        <button
+            type="button"
+            class="icon-btn"
+            title="回到顶部"
+            aria-label="回到顶部"
+            onclick="window.scrollTo({top:0,behavior:'smooth'})">
+            <i class="bi bi-arrow-up"></i>
+        </button>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-main">
+            <div class="hero-gif">
+                <img
+                    src="Personalization/gif.gif"
+                    alt="右上角装饰动图"
+                    loading="lazy">
+            </div>
+<!---->
+            <div class="eyebrow">
+                <span></span>
+                SYSTEM ONLINE
+            </div>
+<!---->
+            <h1>
+                你好，<br>
+                <span class="gradient-text">欢迎回来。</span>
+            </h1>
+<!---->
+            <p class="hero-desc">
+                这里是你的专属数字空间。
+                快速访问常用网站，发现有趣内容，让每一次打开浏览器都更加高效。
+            </p>
+<!---->
+            <div class="hero-footer">
+                <img
+                    class="avatar"
+                    id="avatar"
+                    src="Personalization/avatar.png"
+                    alt="头像"
+                    title="点击显示或隐藏音乐播放器">
+<!---->
+                <div class="welcome" id="welcome">
+                    正在加载问候语...
                 
 </div>
 <!---->
 <!---->
-<!---->
-                <i
-                    class="bi bi-chevron-down arrow open"
-                    id="commonArrow">
-                </i>
             </div>
-<!---->
-            <div class="section-content show" id="commonContent">
-                <div class="section-inner">
-<!---->
-                    <div class="grid">
-<!---->
-                        <a
-                            class="card card-chatgpt"
-                            href="https://chatgpt.com"
-                            target="_blank"
-                            rel="noopener">
-<!---->
-                            <i class="bi bi-robot"></i>
-                            <div class="card-title">ChatGPT
-</div>
-<!---->
-<!---->
-                            <div class="card-desc">AI 智能助手</div>
-                        
-</a>
-<!---->
-<!---->
-<!---->
-                        <a
-                            class="card card-doubao"
-                            href="https://www.doubao.com"
-                            target="_blank"
-                            rel="noopener">
-<!---->
-                            <i class="bi bi-lightning-charge-fill"></i>
-                            <div class="card-title">豆包</div>
-                            <div class="card-desc">字节 AI 助手</div>
-                        
-</a>
-<!---->
-<!---->
-<!---->
-                        <a
-                            class="card"
-                            href="https://www.wenxiaobai.com"
-                            target="_blank"
-                            rel="noopener">
-<!---->
-                            <i class="bi bi-chat-dots-fill"></i>
-                            <div class="card-title">问小白</div>
-                            <div class="card-desc">智能问答平台</div>
-                        
-</a>
-<!---->
-<!---->
-<!---->
-                        <a
-                            class="card card-youtube"
-                            href="https://www.youtube.com"
-                            target="_blank"
-                            rel="noopener">
-<!---->
-                            <i class="bi bi-youtube"></i>
-                            <div class="card-title">YouTube</div>
-                            <div class="card-desc">全球视频平台</div>
-                        
-</a>
-<!---->
-<!---->
-<!---->
-                        <a
-                            class="card card-bilibili"
-                            href="https://www.bilibili.com"
-                            target="_blank"
-                            rel="noopener">
-<!---->
-                            <i class="bi bi-play-btn-fill"></i>
-                            <div class="card-title">哔哩哔哩</div>
-                            <div class="card-desc">年轻人的潮流文化</div>
-                        
-</a>
-<!---->
-<!---->
-<!---->
-                        <a
-                            class="card card-douyin"
-                            href="https://www.douyin.com"
-                            target="_blank"
-                            rel="noopener">
-<!---->
-                            <i class="bi bi-music-note-beamed"></i>
-                            <div class="card-title">抖音</div>
-                            <div class="card-desc">记录美好生活</div>
-                        
-</a>
-<!---->
-<!---->
-<!---->
-                        <a
-                            class="card card-x"
-                            href="https://x.com"
-                            target="_blank"
-                            rel="noopener">
-<!---->
-                            <i class="bi bi-twitter-x"></i>
-                            <div class="card-title">X</div>
-                            <div class="card-desc">全球社交平台</div>
-                        
-</a>
-<!---->
-<!---->
-<!---->
-                    </div>
-                </div>
-            </div>
-        
-</section>
-
-
-<!---->
-        <!-- 音乐资源 -->
-        <section class="category">
-<!---->
-            <div
-                class="section-head"
-                onclick="toggleSection('musicContent','musicArrow')">
-<!---->
-                <div class="section-name">
-                    <span class="section-icon">
-                        <i class="bi bi-vinyl-fill"></i>
-                    </span>
-                    音乐资源
-                
-</div>
-<!---->
-<!---->
-<!---->
-                <i
-                    class="bi bi-chevron-down arrow"
-                    id="musicArrow">
-                </i>
-            </div>
-<!---->
-            <div class="section-content" id="musicContent">
-                <div class="section-inner">
-<!---->
-                    <div class="grid">
-<!---->
-                        <a
-                            class="card"
-                            href="https://www.gequbao.com/"
-                            target="_blank"
-                            rel="noopener">
-<!---->
-                            <i class="bi bi-cloud-download-fill"></i>
-                            <div class="card-title">歌曲宝
-</div>
-<!---->
-<!---->
-                            <div class="card-desc">在线试听 / 下载</div>
-                        
-</a>
-<!---->
-<!---->
-<!---->
-                        <a
-                            class="card"
-                            href="https://zz123.com/"
-                            target="_blank"
-                            rel="noopener">
-<!---->
-                            <i class="bi bi-music-note-list"></i>
-                            <div class="card-title">种子音乐</div>
-                            <div class="card-desc">在线听歌</div>
-                        
-</a>
-<!---->
-<!---->
-<!---->
-                        <a
-                            class="card"
-                            href="https://www.qqmp3.vip/"
-                            target="_blank"
-                            rel="noopener">
-<!---->
-                            <i class="bi bi-headphones"></i>
-                            <div class="card-title">米兔音乐</div>
-                            <div class="card-desc">免费音乐资源</div>
-                        
-</a>
-<!---->
-<!---->
-<!---->
-                    </div>
-                </div>
-            </div>
-        
-</section>
-
-
-<!---->
-        <!-- 每日一言 -->
-        <div class="quote-box">
-            <span class="quote-mark">“</span>
-            <span id="hitokoto">正在加载每日一言...</span>
         </div>
 <!---->
+        <div class="info-card">
+            <div class="info-label">LOCAL TIME · 本地时间</div>
+            <div class="time" id="time">00:00:00</div>
+            <div class="date" id="date">加载中...</div>
+<!---->
+            <div class="weather" id="weather">
+                <span>🌤️</span>
+                获取天气中...
+            </div>
+<!---->
+            <div class="time-extra">
+                <span>按 / 快速聚焦搜索框</span>
+                <span>按空格键播放或暂停音乐</span>
+            </div>
+        </div>
     
+</section>
+
+
+<!---->
+    <form class="search-panel" onsubmit="doSearch(event)">
+        <select id="engine" aria-label="搜索引擎">
+            <option value="bing">Bing</option>
+            <option value="google">Google</option>
+        </select>
+<!---->
+        <input
+            id="keyword"
+            type="text"
+            autocomplete="off"
+            placeholder="搜索网页、图片、问题或灵感..."
+            aria-label="搜索关键词"
+            required>
+<!---->
+        <span class="search-shortcut">按 / 聚焦</span>
+<!---->
+        <button type="submit">
+            <i class="bi bi-search"></i>
+            搜索
+        </button>
+    </form>
+<!---->
+    <a
+        class="banner"
+        href="https://172.lot-ml.com/ProductEn/Index/c68981b403e80740"
+        target="_blank"
+        rel="noopener">
+<!---->
+        <span class="banner-label">HOT</span>
+<!---->
+        <div class="banner-content">
+            <div class="banner-title">
+                <i class="bi bi-broadcast-pin"></i>
+                流量卡专区
+            </div>
+            <div class="banner-desc">
+                高性价套餐 · 大流量 · 在线办理
+            </div>
+        </div>
+<!---->
+        <span class="banner-btn">
+            立即办理
+            <i class="bi bi-arrow-up-right"></i>
+        </span>
+    
+</a>
+<!---->
+
+<!---->
+    <!-- 常用网站 -->
+    <section class="category">
+        <div
+            class="section-head"
+            onclick="toggleSection('commonContent','commonArrow')">
+<!---->
+            <div class="section-name">
+                <span class="section-icon">
+                    <i class="bi bi-grid-1x2-fill"></i>
+                </span>
+                常用网站
+            
+</div>
+<!---->
+<!---->
+<!---->
+            <i
+                class="bi bi-chevron-down arrow open"
+                id="commonArrow">
+            </i>
+        </div>
+<!---->
+        <div class="section-content show" id="commonContent">
+            <div class="section-inner">
+                <div class="grid">
+<!---->
+                    <a
+                        class="card card-chatgpt"
+                        href="https://chatgpt.com"
+                        target="_blank"
+                        rel="noopener">
+                        <i class="bi bi-robot"></i>
+                        <div class="card-title">ChatGPT
+</div>
+<!---->
+<!---->
+                        <div class="card-desc">AI 智能助手</div>
+                    </a>
+<!---->
+                    <a
+                        class="card card-youtube"
+                        href="https://www.youtube.com"
+                        target="_blank"
+                        rel="noopener">
+                        <i class="bi bi-youtube"></i>
+                        <div class="card-title">YouTube</div>
+                        <div class="card-desc">全球视频平台</div>
+                    </a>
+<!---->
+                    <a
+                        class="card card-bilibili"
+                        href="https://www.bilibili.com"
+                        target="_blank"
+                        rel="noopener">
+                        <i class="bi bi-play-btn-fill"></i>
+                        <div class="card-title">哔哩哔哩</div>
+                        <div class="card-desc">年轻人的潮流文化</div>
+                    </a>
+<!---->
+                    <a
+                        class="card card-douyin"
+                        href="https://www.douyin.com"
+                        target="_blank"
+                        rel="noopener">
+                        <i class="bi bi-music-note-beamed"></i>
+                        <div class="card-title">抖音</div>
+                        <div class="card-desc">记录美好生活</div>
+                    </a>
+<!---->
+                    <a
+                        class="card card-x"
+                        href="https://x.com"
+                        target="_blank"
+                        rel="noopener">
+                        <i class="bi bi-twitter-x"></i>
+                        <div class="card-title">X</div>
+                        <div class="card-desc">全球社交平台</div>
+                    </a>
+<!---->
+                    <a
+                        class="card"
+                        href="https://www.idaohang123.com/"
+                        target="_blank"
+                        rel="noopener">
+                        <i class="bi bi-cloud-arrow-down-fill"></i>
+                        <div class="card-title">短视频解析</div>
+                        <div class="card-desc">短视频下载解析</div>
+                    </a>
+<!---->
+                </div>
+            </div>
+        </div>
+    
+</section>
+
+
+<!---->
+    <!-- 音乐资源 -->
+    <section class="category">
+        <div
+            class="section-head"
+            onclick="toggleSection('musicContent','musicArrow')">
+<!---->
+            <div class="section-name">
+                <span class="section-icon">
+                    <i class="bi bi-vinyl-fill"></i>
+                </span>
+                音乐资源
+            
+</div>
+<!---->
+<!---->
+<!---->
+            <i
+                class="bi bi-chevron-down arrow"
+                id="musicArrow">
+            </i>
+        </div>
+<!---->
+        <div class="section-content" id="musicContent">
+            <div class="section-inner">
+                <div class="grid">
+<!---->
+                    <a
+                        class="card"
+                        href="https://www.gequbao.com/"
+                        target="_blank"
+                        rel="noopener">
+                        <i class="bi bi-cloud-download-fill"></i>
+                        <div class="card-title">歌曲宝
+</div>
+<!---->
+<!---->
+                        <div class="card-desc">在线试听 / 下载</div>
+                    </a>
+<!---->
+                    <a
+                        class="card"
+                        href="https://zz123.com/"
+                        target="_blank"
+                        rel="noopener">
+                        <i class="bi bi-music-note-list"></i>
+                        <div class="card-title">种子音乐</div>
+                        <div class="card-desc">在线听歌</div>
+                    </a>
+<!---->
+                    <a
+                        class="card"
+                        href="https://www.qqmp3.vip/"
+                        target="_blank"
+                        rel="noopener">
+                        <i class="bi bi-headphones"></i>
+                        <div class="card-title">米兔音乐</div>
+                        <div class="card-desc">免费音乐资源</div>
+                    </a>
+<!---->
+                </div>
+            </div>
+        </div>
+    
+</section>
+
+
+<!---->
+    <div class="quote-box">
+        <span class="quote-mark">“</span>
+        <span id="hitokoto">正在加载每日一言...</span>
+    </div>
 </main>
 
 
 
-    <footer class="footer">
+<footer class="footer">
+    <div id="runtime">🚀 已运行 0 天</div>
 
-        <div id="runtime">
-            🚀 已运行 0 天
-        </div>
+    © 2026 shuoce.eu.cc
 
-        © 2026 shuoce.eu.cc
+    <br>
 
-        <br>
+    <a href="mailto:shuo@shuoce.eu.cc">
+        <i class="bi bi-envelope"></i>
+        shuo@shuoce.eu.cc
+    </a>
 
-        <span>
-            👀
-            <span id="busuanzi_value_site_pv"></span>
-            次访问
-        </span>
+    <br>
 
-        &nbsp; · &nbsp;
+    <span>
+        👀
+        <span id="busuanzi_value_site_pv"></span>
+        次访问
+    </span>
 
-        <span>
-            🌍
-            <span id="busuanzi_value_site_uv"></span>
-            位访客
-        </span>
+    &nbsp; · &nbsp;
 
-    </footer>
+    <span>
+        🌍
+        <span id="busuanzi_value_site_uv"></span>
+        位访客
+    </span>
+</footer>
 
 </div>
 
 <!-- 音乐播放器 -->
 <div class="music-player" id="musicPlayer">
-<!---->
     <div class="music-top">
-<!---->
         <div class="music-cover" id="musicCover">
             <img
                 src="Personalization/player icon.png"
                 alt="音乐封面">
-        
-</div>
-
-
+        </div>
 
         <div class="music-meta">
-<!---->
-            <div class="music-title" id="musicTitle">
-                奶酪
-            
-</div>
-
-
-
+            <div class="music-title" id="musicTitle">奶酪</div>
             <div class="music-artist" id="musicArtist">
                 未知歌手 · Personal Music
             </div>
-
         </div>
 
         <button
@@ -1953,10 +1657,8 @@ button{
             onclick="togglePlayer()"
             title="隐藏播放器"
             aria-label="隐藏播放器">
-
             <i class="bi bi-x-lg"></i>
         </button>
-
     </div>
 
     <input
@@ -1973,13 +1675,11 @@ button{
     </div>
 
     <div class="music-controls">
-<!---->
         <button
             type="button"
             id="prevBtn"
             title="上一首"
             aria-label="上一首">
-<!---->
             <i class="bi bi-skip-backward-fill"></i>
         </button>
 <!---->
@@ -1988,7 +1688,6 @@ button{
             id="playBtn"
             title="播放或暂停"
             aria-label="播放或暂停">
-<!---->
             <i class="bi bi-play-fill"></i>
         </button>
 <!---->
@@ -1997,38 +1696,25 @@ button{
             id="nextBtn"
             title="下一首"
             aria-label="下一首">
-<!---->
             <i class="bi bi-skip-forward-fill"></i>
         </button>
-<!---->
     
 </div>
 
 
 
-    <audio
-        id="audio"
-        preload="metadata"
-        playsinline>
-    </audio>
-
+    <audio id="audio" preload="metadata" playsinline></audio>
 </div>
 
 <script>
-/* =========================
-   时间与问候
-========================= */
-
+/* 时间与问候 */
 function updateTime(){
+    const now=new Date();
 
-    const now = new Date();
+    document.getElementById("time").textContent=
+        now.toLocaleTimeString("zh-CN",{hour12:false});
 
-    document.getElementById("time").textContent =
-        now.toLocaleTimeString("zh-CN",{
-            hour12:false
-        });
-
-    document.getElementById("date").textContent =
+    document.getElementById("date").textContent=
         now.toLocaleDateString("zh-CN",{
             year:"numeric",
             month:"long",
@@ -2036,60 +1722,49 @@ function updateTime(){
             weekday:"long"
         });
 
-    const hour = now.getHours();
+    const hour=now.getHours();
+    let welcome="🌆 晚上好，愿你保持好心情";
 
-    let welcome = "🌆 晚上好，愿你保持好心情";
-
-    if(hour < 6){
-        welcome = "🌙 夜深了，早点休息";
-    }else if(hour < 12){
-        welcome = "☀️ 早上好，今天也要元气满满";
-    }else if(hour < 18){
-        welcome = "🌤️ 下午好，继续加油";
+    if(hour<6){
+        welcome="🌙 夜深了，早点休息";
+    }else if(hour<12){
+        welcome="☀️ 早上好，今天也要元气满满";
+    }else if(hour<18){
+        welcome="🌤️ 下午好，继续加油";
     }
 
-    document.getElementById("welcome").textContent =
-        welcome;
+    document.getElementById("welcome").textContent=welcome;
 }
 
 updateTime();
 setInterval(updateTime,1000);
 
 
-/* =========================
-   搜索
-========================= */
-
+/* 搜索 */
 function doSearch(event){
-
     event.preventDefault();
 
-    const keyword = encodeURIComponent(
+    const keyword=encodeURIComponent(
         document.getElementById("keyword").value.trim()
     );
 
-    const engine =
-        document.getElementById("engine").value;
+    const engine=document.getElementById("engine").value;
 
-    const searchUrl = {
+    const searchUrl={
         bing:"https://www.bing.com/search?q=",
         google:"https://www.google.com/search?q="
     };
 
     window.open(
-        searchUrl[engine] + keyword,
+        searchUrl[engine]+keyword,
         "_blank",
         "noopener"
     );
 }
 
 
-/* =========================
-   天气
-   Open-Meteo，无需 API Key
-========================= */
-
-const weatherTextMap = {
+/* 天气 */
+const weatherTextMap={
     0:"晴朗",
     1:"大致晴朗",
     2:"局部多云",
@@ -2121,138 +1796,85 @@ const weatherTextMap = {
 };
 
 function getWeatherIcon(code){
-
-    if(code === 0){
-        return "☀️";
-    }
-
-    if([1,2].includes(code)){
-        return "🌤️";
-    }
-
-    if([3,45,48].includes(code)){
-        return "☁️";
-    }
-
+    if(code===0)return"☀️";
+    if([1,2].includes(code))return"🌤️";
+    if([3,45,48].includes(code))return"☁️";
     if([
-        51,53,55,56,57,
-        61,63,65,66,67,
-        80,81,82
-    ].includes(code)){
-        return "🌧️";
-    }
-
-    if([71,73,75,77,85,86].includes(code)){
-        return "❄️";
-    }
-
-    if([95,96,99].includes(code)){
-        return "⛈️";
-    }
-
-    return "🌤️";
+        51,53,55,56,57,61,63,65,66,67,80,81,82
+    ].includes(code))return"🌧️";
+    if([71,73,75,77,85,86].includes(code))return"❄️";
+    if([95,96,99].includes(code))return"⛈️";
+    return"🌤️";
 }
 
 function showWeatherError(){
-
-    document.getElementById("weather").innerHTML =
-        `<span>🌤️</span> 天气暂时不可用`;
+    document.getElementById("weather").innerHTML=
+        "<span>🌤️</span> 天气暂时不可用";
 }
 
 function renderWeather(data){
-
-    if(!data || !data.current){
+    if(!data||!data.current){
         showWeatherError();
         return;
     }
 
-    const current = data.current;
+    const current=data.current;
+    const temperature=Math.round(current.temperature_2m);
+    const code=current.weather_code;
+    const description=weatherTextMap[code]||"天气未知";
+    const icon=getWeatherIcon(code);
 
-    const temperature =
-        Math.round(current.temperature_2m);
-
-    const weatherCode =
-        current.weather_code;
-
-    const description =
-        weatherTextMap[weatherCode] || "天气未知";
-
-    const icon =
-        getWeatherIcon(weatherCode);
-
-    document.getElementById("weather").innerHTML =
-        `<span>${icon}</span>
-         ${temperature}°C · ${description}`;
+    document.getElementById("weather").innerHTML=
+        `<span>${icon}</span> ${temperature}°C · ${description}`;
 }
 
 function fetchWeather(latitude,longitude){
-
-    const url =
-        "https://api.open-meteo.com/v1/forecast" +
-        `?latitude=${latitude}` +
-        `&longitude=${longitude}` +
-        "&current=temperature_2m,weather_code" +
+    const url=
+        "https://api.open-meteo.com/v1/forecast"+
+        `?latitude=${latitude}`+
+        `&longitude=${longitude}`+
+        "&current=temperature_2m,weather_code"+
         "&timezone=auto";
 
-    const controller =
-        new AbortController();
+    const controller=new AbortController();
+    const timeout=setTimeout(()=>controller.abort(),7000);
 
-    const timeout =
-        setTimeout(() => {
-            controller.abort();
-        },7000);
-
-    fetch(url,{
-        signal:controller.signal
-    })
-    .then(response => {
-
-        clearTimeout(timeout);
-
-        if(!response.ok){
-            throw new Error("天气请求失败");
-        }
-
-        return response.json();
-    })
-    .then(renderWeather)
-    .catch(showWeatherError);
+    fetch(url,{signal:controller.signal})
+        .then(response=>{
+            clearTimeout(timeout);
+            if(!response.ok)throw new Error("天气请求失败");
+            return response.json();
+        })
+        .then(renderWeather)
+        .catch(showWeatherError);
 }
 
-const defaultLocation = {
+const defaultLocation={
     latitude:39.9042,
     longitude:116.4074
 };
 
 if("geolocation" in navigator){
-
     navigator.geolocation.getCurrentPosition(
-
-        position => {
-
+        position=>{
             fetchWeather(
                 position.coords.latitude,
                 position.coords.longitude
             );
         },
-
-        () => {
-
+        ()=>{
             fetchWeather(
                 defaultLocation.latitude,
                 defaultLocation.longitude
             );
         },
-
         {
             enableHighAccuracy:false,
             timeout:5000,
             maximumAge:1800000
         }
     );
-
 }else{
-
     fetchWeather(
         defaultLocation.latitude,
         defaultLocation.longitude
@@ -2260,90 +1882,60 @@ if("geolocation" in navigator){
 }
 
 
-/* =========================
-   每日一言
-========================= */
-
+/* 每日一言 */
 fetch("https://v1.hitokoto.cn/")
-.then(response => response.json())
-.then(data => {
+    .then(response=>response.json())
+    .then(data=>{
+        const from=data.from
+            ?`<small>—— ${data.from}</small>`
+            :"";
 
-    const from = data.from
-        ? `<small>—— ${data.from}</small>`
-        : "";
-
-    document.getElementById("hitokoto").innerHTML =
-        `「${data.hitokoto}」${from}`;
-})
-.catch(() => {
-
-    document.getElementById("hitokoto").textContent =
-        "保持热爱，奔赴山海。";
-});
+        document.getElementById("hitokoto").innerHTML=
+            `「${data.hitokoto}」${from}`;
+    })
+    .catch(()=>{
+        document.getElementById("hitokoto").textContent=
+            "保持热爱，奔赴山海。";
+    });
 
 
-/* =========================
-   分类折叠
-========================= */
-
+/* 分类折叠 */
 function toggleSection(contentId,arrowId){
-
-    const content =
-        document.getElementById(contentId);
-
-    const arrow =
-        document.getElementById(arrowId);
-
-    content.classList.toggle("show");
-    arrow.classList.toggle("open");
+    document.getElementById(contentId).classList.toggle("show");
+    document.getElementById(arrowId).classList.toggle("open");
 }
 
 
-/* =========================
-   主题切换
-========================= */
-
-const appearanceBtn =
-    document.getElementById("appearanceBtn");
-
-const appearancePanel =
-    document.getElementById("appearancePanel");
-
-const themeOptions =
-    document.querySelectorAll(".theme-option");
-
-const systemTheme =
-    window.matchMedia("(prefers-color-scheme: light)");
+/* 主题切换 */
+const appearanceBtn=document.getElementById("appearanceBtn");
+const appearancePanel=document.getElementById("appearancePanel");
+const themeOptions=document.querySelectorAll(".theme-option");
+const systemTheme=window.matchMedia("(prefers-color-scheme: light)");
 
 function applyTheme(theme){
-
     document.body.classList.remove(
         "light-mode",
         "transparent-mode"
     );
 
-    let actualTheme = theme;
+    let actualTheme=theme;
 
-    if(theme === "system"){
-        actualTheme =
-            systemTheme.matches
-                ? "light"
-                : "dark";
+    if(theme==="system"){
+        actualTheme=systemTheme.matches?"light":"dark";
     }
 
-    if(actualTheme === "light"){
+    if(actualTheme==="light"){
         document.body.classList.add("light-mode");
     }
 
-    if(actualTheme === "transparent"){
+    if(actualTheme==="transparent"){
         document.body.classList.add("transparent-mode");
     }
 
-    themeOptions.forEach(option => {
-
+    themeOptions.forEach(option=>{
         option.classList.toggle(
             "active",
-            option.dataset.theme === theme
+            option.dataset.theme===theme
         );
     });
 
@@ -2351,27 +1943,17 @@ function applyTheme(theme){
 }
 
 function closeAppearancePanel(){
-
     appearancePanel.classList.remove("show");
 
-    appearanceBtn.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
-    appearancePanel.setAttribute(
-        "aria-hidden",
-        "true"
-    );
+    appearanceBtn.setAttribute("aria-expanded","false");
+    appearancePanel.setAttribute("aria-hidden","true");
 }
 
-appearanceBtn.addEventListener("click",event => {
-
+appearanceBtn.addEventListener("click",event=>{
     event.preventDefault();
     event.stopPropagation();
 
-    const isOpen =
-        appearancePanel.classList.toggle("show");
+    const isOpen=appearancePanel.classList.toggle("show");
 
     appearanceBtn.setAttribute(
         "aria-expanded",
@@ -2384,78 +1966,58 @@ appearanceBtn.addEventListener("click",event => {
     );
 });
 
-themeOptions.forEach(option => {
-
-    option.addEventListener("click",event => {
-
+themeOptions.forEach(option=>{
+    option.addEventListener("click",event=>{
         event.preventDefault();
         event.stopPropagation();
 
-        applyTheme(
-            event.currentTarget.dataset.theme
-        );
-
+        applyTheme(event.currentTarget.dataset.theme);
         closeAppearancePanel();
     });
 });
 
-appearancePanel.addEventListener("click",event => {
+appearancePanel.addEventListener("click",event=>{
     event.stopPropagation();
 });
 
-document.addEventListener("click",event => {
-
+document.addEventListener("click",event=>{
     if(
-        !appearancePanel.contains(event.target) &&
+        !appearancePanel.contains(event.target)&&
         !appearanceBtn.contains(event.target)
     ){
         closeAppearancePanel();
     }
 });
 
-document.addEventListener("keydown",event => {
-
-    if(event.key === "Escape"){
+document.addEventListener("keydown",event=>{
+    if(event.key==="Escape"){
         closeAppearancePanel();
     }
 });
 
-systemTheme.addEventListener("change",() => {
-
-    if(localStorage.getItem("theme") === "system"){
+systemTheme.addEventListener("change",()=>{
+    if(localStorage.getItem("theme")==="system"){
         applyTheme("system");
     }
 });
 
-applyTheme(
-    localStorage.getItem("theme") || "glass"
-);
+applyTheme(localStorage.getItem("theme")||"glass");
 
 
-/* =========================
-   运行时间
-========================= */
-
-const startDate =
-    new Date("2025-06-25T00:00:00");
+/* 运行时间 */
+const startDate=new Date("2025-06-25T00:00:00");
 
 function updateRuntime(){
-
-    const diff = Math.max(
+    const diff=Math.max(
         0,
-        Date.now() - startDate.getTime()
+        Date.now()-startDate.getTime()
     );
 
-    const days =
-        Math.floor(diff / 86400000);
+    const days=Math.floor(diff/86400000);
+    const hours=Math.floor(diff/3600000)%24;
+    const minutes=Math.floor(diff/60000)%60;
 
-    const hours =
-        Math.floor(diff / 3600000) % 24;
-
-    const minutes =
-        Math.floor(diff / 60000) % 60;
-
-    document.getElementById("runtime").textContent =
+    document.getElementById("runtime").textContent=
         `🚀 已运行 ${days} 天 ${hours} 小时 ${minutes} 分钟`;
 }
 
@@ -2463,44 +2025,20 @@ updateRuntime();
 setInterval(updateRuntime,60000);
 
 
-/* =========================
-   音乐播放器
-========================= */
+/* 音乐播放器 */
+const player=document.getElementById("musicPlayer");
+const audio=document.getElementById("audio");
+const cover=document.getElementById("musicCover");
+const progress=document.getElementById("progress");
+const playBtn=document.getElementById("playBtn");
+const prevBtn=document.getElementById("prevBtn");
+const nextBtn=document.getElementById("nextBtn");
+const title=document.getElementById("musicTitle");
+const artist=document.getElementById("musicArtist");
+const currentTime=document.getElementById("currentTime");
+const duration=document.getElementById("duration");
 
-const player =
-    document.getElementById("musicPlayer");
-
-const audio =
-    document.getElementById("audio");
-
-const cover =
-    document.getElementById("musicCover");
-
-const progress =
-    document.getElementById("progress");
-
-const playBtn =
-    document.getElementById("playBtn");
-
-const prevBtn =
-    document.getElementById("prevBtn");
-
-const nextBtn =
-    document.getElementById("nextBtn");
-
-const title =
-    document.getElementById("musicTitle");
-
-const artist =
-    document.getElementById("musicArtist");
-
-const currentTime =
-    document.getElementById("currentTime");
-
-const duration =
-    document.getElementById("duration");
-
-const playlist = [
+const playlist=[
     {
         title:"奶酪",
         artist:"未知歌手",
@@ -2508,168 +2046,116 @@ const playlist = [
     }
 ];
 
-let currentIndex = 0;
+let currentIndex=0;
 
 function formatTime(seconds){
+    seconds=Math.floor(seconds||0);
 
-    seconds =
-        Math.floor(seconds || 0);
-
-    const minutes =
-        Math.floor(seconds / 60);
-
-    const secondsText =
-        String(seconds % 60).padStart(2,"0");
+    const minutes=Math.floor(seconds/60);
+    const secondsText=String(seconds%60).padStart(2,"0");
 
     return `${String(minutes).padStart(2,"0")}:${secondsText}`;
 }
 
 function loadSong(index){
+    const song=playlist[index];
 
-    const song =
-        playlist[index];
-
-    audio.src =
-        song.src;
-
-    title.textContent =
-        song.title;
-
-    artist.textContent =
-        `${song.artist} · Personal Music`;
+    audio.src=song.src;
+    title.textContent=song.title;
+    artist.textContent=`${song.artist} · Personal Music`;
 
     audio.load();
 }
 
 function updatePlayButton(isPlaying){
+    playBtn.innerHTML=isPlaying
+        ?'<i class="bi bi-pause-fill"></i>'
+        :'<i class="bi bi-play-fill"></i>';
 
-    playBtn.innerHTML =
-        isPlaying
-            ? `<i class="bi bi-pause-fill"></i>`
-            : `<i class="bi bi-play-fill"></i>`;
-
-    cover.classList.toggle(
-        "playing",
-        isPlaying
-    );
-
-    document.body.classList.toggle(
-        "audio-playing",
-        isPlaying
-    );
+    cover.classList.toggle("playing",isPlaying);
+    document.body.classList.toggle("audio-playing",isPlaying);
 }
 
 function playAudio(){
+    if(!audio.src)return;
 
-    if(!audio.src){
-        return;
-    }
+    const playPromise=audio.play();
 
-    const playPromise =
-        audio.play();
-
-    if(playPromise !== undefined){
-
+    if(playPromise!==undefined){
         playPromise
-        .then(() => {
-            updatePlayButton(true);
-        })
-        .catch(error => {
-
-            console.warn(
-                "音乐播放失败：",
-                error
-            );
-
-            updatePlayButton(false);
-        });
+            .then(()=>updatePlayButton(true))
+            .catch(error=>{
+                console.warn("音乐播放失败：",error);
+                updatePlayButton(false);
+            });
     }
 }
 
-playBtn.addEventListener("click",() => {
-
+playBtn.addEventListener("click",()=>{
     if(audio.paused){
-
         playAudio();
-
     }else{
-
         audio.pause();
         updatePlayButton(false);
     }
 });
 
-prevBtn.addEventListener("click",() => {
-
-    currentIndex =
-        (currentIndex - 1 + playlist.length)
-        % playlist.length;
+prevBtn.addEventListener("click",()=>{
+    currentIndex=
+        (currentIndex-1+playlist.length)%playlist.length;
 
     loadSong(currentIndex);
     playAudio();
 });
 
-nextBtn.addEventListener("click",() => {
-
-    currentIndex =
-        (currentIndex + 1)
-        % playlist.length;
+nextBtn.addEventListener("click",()=>{
+    currentIndex=
+        (currentIndex+1)%playlist.length;
 
     loadSong(currentIndex);
     playAudio();
 });
 
-audio.addEventListener("play",() => {
+audio.addEventListener("play",()=>{
     updatePlayButton(true);
 });
 
-audio.addEventListener("pause",() => {
+audio.addEventListener("pause",()=>{
     updatePlayButton(false);
 });
 
-audio.addEventListener("timeupdate",() => {
-
+audio.addEventListener("timeupdate",()=>{
     if(
-        Number.isFinite(audio.duration) &&
-        audio.duration > 0
+        Number.isFinite(audio.duration)&&
+        audio.duration>0
     ){
-        progress.value =
-            audio.currentTime /
-            audio.duration *
-            100;
+        progress.value=
+            audio.currentTime/audio.duration*100;
     }
 
-    currentTime.textContent =
-        formatTime(audio.currentTime);
+    currentTime.textContent=formatTime(audio.currentTime);
 });
 
-audio.addEventListener("loadedmetadata",() => {
-
-    duration.textContent =
-        formatTime(audio.duration);
+audio.addEventListener("loadedmetadata",()=>{
+    duration.textContent=formatTime(audio.duration);
 });
 
-progress.addEventListener("input",() => {
-
+progress.addEventListener("input",()=>{
     if(
-        Number.isFinite(audio.duration) &&
-        audio.duration > 0
+        Number.isFinite(audio.duration)&&
+        audio.duration>0
     ){
-        audio.currentTime =
-            progress.value /
-            100 *
-            audio.duration;
+        audio.currentTime=
+            progress.value/100*audio.duration;
     }
 });
 
-audio.addEventListener("ended",() => {
+audio.addEventListener("ended",()=>{
     nextBtn.click();
 });
 
-audio.addEventListener("error",() => {
-
+audio.addEventListener("error",()=>{
     updatePlayButton(false);
-
     console.warn(
         "音乐文件加载失败，请检查路径：",
         audio.src
@@ -2677,7 +2163,6 @@ audio.addEventListener("error",() => {
 });
 
 function togglePlayer(){
-
     player.classList.toggle("hidden");
 }
 
@@ -2687,42 +2172,32 @@ document.getElementById("avatar")
 loadSong(currentIndex);
 
 
-/* =========================
-   键盘快捷键
-========================= */
-
-document.addEventListener("keydown",event => {
-
-    const activeTag =
-        document.activeElement.tagName;
+/* 键盘快捷键 */
+document.addEventListener("keydown",event=>{
+    const activeTag=document.activeElement.tagName;
 
     if(
-        event.key === "/" &&
-        activeTag !== "INPUT" &&
-        activeTag !== "TEXTAREA" &&
-        activeTag !== "SELECT"
+        event.key==="/"&&
+        activeTag!=="INPUT"&&
+        activeTag!=="TEXTAREA"&&
+        activeTag!=="SELECT"
     ){
         event.preventDefault();
-
         document.getElementById("keyword").focus();
     }
 
     if(
-        event.code === "Space" &&
-        activeTag !== "INPUT" &&
-        activeTag !== "TEXTAREA" &&
-        activeTag !== "SELECT"
+        event.code==="Space"&&
+        activeTag!=="INPUT"&&
+        activeTag!=="TEXTAREA"&&
+        activeTag!=="SELECT"
     ){
         event.preventDefault();
-
         playBtn.click();
     }
 });
 </script>
 
-<script async
-src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
